@@ -769,6 +769,184 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-carousel-counter { display: none; }
 }
 
+/* ── Mosaic 3-Panel Hero (Section 1) ────────────────── */
+/* LEFT narrow | CENTER wide + text overlay | RIGHT narrow */
+.mosaic-hero {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  height: 52vw;
+  max-height: 620px;
+  min-height: 340px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* All panels share base styles */
+.mosaic-panel {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+.mosaic-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+.mosaic-panel:hover img { transform: scale(1.03); }
+.mosaic-placeholder { width: 100%; height: 100%; background: var(--bg-2); }
+
+/* Side panels — slightly dimmed, no text */
+.mosaic-side { cursor: pointer; }
+.mosaic-left  { border-right: 1px solid var(--border); }
+.mosaic-right { border-left: 1px solid var(--border); }
+.mosaic-side-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.32);
+  transition: background 0.2s;
+}
+.mosaic-side:hover .mosaic-side-overlay { background: rgba(0,0,0,0.18); }
+
+/* Side arrow hint */
+.mosaic-side-arrow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px; color: rgba(255,255,255,0.7);
+  line-height: 1; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.mosaic-side:hover .mosaic-side-arrow { opacity: 0; }
+
+/* CENTER panel */
+.mosaic-center { cursor: pointer; }
+.mosaic-center-img { animation: mosaicFade 0.55s ease; }
+@keyframes mosaicFade {
+  from { opacity: 0; transform: scale(1.025); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Gradient overlay — bottom two-thirds darkens for text legibility */
+.mosaic-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.08) 100%
+  );
+  pointer-events: none;
+}
+
+/* Text content — bottom-left */
+.mosaic-content {
+  position: absolute;
+  bottom: 56px; left: 36px; right: 120px;
+  color: #fff;
+  pointer-events: none;
+}
+.mosaic-eyebrow {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+.mosaic-headline {
+  font-family: var(--font-head);
+  font-size: clamp(26px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.mosaic-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+  pointer-events: all;
+}
+.mosaic-center:hover .mosaic-cta-btn { background: rgba(255,255,255,0.28); }
+
+/* < > arrows on sides of center panel */
+.mosaic-center-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 20px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10;
+  transition: background 0.15s;
+}
+.mosaic-center-arrow:hover { background: rgba(255,255,255,0.35); }
+.mosaic-center-prev { left: 14px; }
+.mosaic-center-next { right: 14px; }
+
+/* Dot row — bottom-center of center panel */
+.mosaic-dots {
+  position: absolute;
+  bottom: 18px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 6px;
+  pointer-events: none;
+}
+.mosaic-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none; padding: 0;
+  cursor: pointer; pointer-events: all;
+  transition: all 0.2s;
+}
+.mosaic-dot.active {
+  width: 20px; border-radius: 3px;
+  background: #fff;
+}
+
+/* Floating social sidebar — left edge (matches screenshot) */
+.social-sidebar {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 12px;
+  z-index: 20;
+}
+.social-sidebar a {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.85);
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.social-sidebar a:hover { background: rgba(255,255,255,0.35); color: #fff; }
+
+/* Mobile: collapse side panels, show only center fullwidth */
+@media (max-width: 768px) {
+  .mosaic-hero { grid-template-columns: 1fr; height: 70vw; max-height: 420px; }
+  .mosaic-side { display: none; }
+  .mosaic-content { bottom: 40px; left: 20px; right: 60px; }
+  .mosaic-headline { font-size: clamp(22px, 6vw, 36px); }
+  .social-sidebar { left: 8px; }
+}
+
+
 /* ── Shopify-style PDP ──────────────────────────────── */
 /* Full-width layout: photo gallery (auto) | sticky info panel (fixed width) */
 .pdp-shopify-outer {

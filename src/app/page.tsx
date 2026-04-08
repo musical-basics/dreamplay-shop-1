@@ -22,131 +22,35 @@ function useCountdown(hours = 72) {
   return { h: pad(t.h), m: pad(t.m), s: pad(t.s) };
 }
 
-// ── Hero Carousel ─────────────────────────────────────────────────────────────
-function HeroCarousel({ products }: { products: Product[] }) {
-  const [idx, setIdx] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const go = useCallback((n: number) => {
-    setIdx(n);
-    if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setIdx(i => (i + 1) % products.length), 5000);
-  }, [products.length]);
-
-  useEffect(() => {
-    if (!products.length) return;
-    timerRef.current = setTimeout(() => setIdx(i => (i + 1) % products.length), 5000);
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [products.length]);
-
-  if (!products.length) return (
-    <div style={{ height: '70vh', background: 'var(--bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: 14 }}>
-      Run <code style={{ margin: '0 6px', background: 'var(--bg-3)', padding: '2px 8px', borderRadius: 4 }}>pnpm seed</code> to load products
-    </div>
-  );
-
-  const p = products[idx];
-  const img = p.images.find(i => i.is_primary) ?? p.images[0];
-
-  return (
-    <div className="hero-carousel" aria-roledescription="carousel">
-      {/* Full-width slide */}
-      <div className="hero-carousel-slide">
-        {/* Background image — fills left 65% */}
-        <div className="hero-carousel-img">
-          {img ? (
-            <img key={img.url} src={img.url} alt={p.name} loading="eager" />
-          ) : (
-            <div style={{ width: '100%', height: '100%', background: 'var(--bg-2)' }} />
-          )}
-        </div>
-
-        {/* Right panel — product info */}
-        <div className="hero-carousel-info">
-          <div className="hero-carousel-eyebrow">
-            {p.category === 'merch' ? 'New Drop' : 'Pre-Order'} · {p.subcategory}
-          </div>
-          <h2 className="hero-carousel-title">{p.name}</h2>
-          <div className="hero-carousel-price">${p.price}</div>
-          {p.badge && (
-            <span style={{ display: 'inline-block', background: p.badge === 'Coming Soon' ? 'var(--bg-3)' : '#111', color: p.badge === 'Coming Soon' ? 'var(--text-muted)' : '#fff', fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 3, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 16 }}>
-              {p.badge}
-            </span>
-          )}
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 24 }}>
-            <Link href={`/products/${p.slug}`} className="btn btn-primary btn-lg">
-              {p.category === 'pianos' ? 'Pre-order Now' : 'Shop Now'}
-            </Link>
-            <Link href={`/collections/${p.category}`} className="btn btn-secondary btn-lg">
-              See Collection
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Dot nav + arrows */}
-      <div className="hero-carousel-nav">
-        <button className="hero-carousel-arrow" onClick={() => go((idx - 1 + products.length) % products.length)} aria-label="Previous">‹</button>
-        <div className="hero-carousel-dots">
-          {products.map((_, i) => (
-            <button
-              key={i}
-              className={`hero-carousel-dot${i === idx ? ' active' : ''}`}
-              onClick={() => go(i)}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))}
-        </div>
-        <button className="hero-carousel-arrow" onClick={() => go((idx + 1) % products.length)} aria-label="Next">›</button>
-      </div>
-
-      {/* Slide counter */}
-      <div className="hero-carousel-counter" aria-live="polite">
-        {String(idx + 1).padStart(2, '0')} / {String(products.length).padStart(2, '0')}
-      </div>
-    </div>
-  );
-}
-
-// ── Product Card ──────────────────────────────────────────────────────────────
-function ProductCard({ p }: { p: Product }) {
-  const img = p.images.find(i => i.is_primary) ?? p.images[0];
-  const img2 = p.images.find(i => !i.is_primary && i !== img);
-  const [hover, setHover] = useState(false);
-  return (
-    <Link
-      href={`/products/${p.slug}`}
-      className="product-card"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <div className="product-card-img">
-        {img && <img src={hover && img2 ? img2.url : img.url} alt={p.name} loading="lazy" style={{ transition: 'opacity 0.3s' }} />}
-        {p.badge && <span className={`product-badge ${p.badge === 'Coming Soon' ? 'badge-soon' : p.badge === 'Sale' ? 'badge-sale' : 'badge-new'}`}>{p.badge}</span>}
-        <button className="quick-buy-btn" onClick={e => { e.preventDefault(); window.open(p.shopify_url || 'https://dreamplay-pianos.myshopify.com/collections/all', '_blank'); }}>
-          {p.category === 'pianos' ? 'Pre-order →' : 'Buy Now →'}
-        </button>
-      </div>
-      <div className="product-card-info">
-        <div className="product-card-name">{p.name}</div>
-        <div className="product-card-sub">{p.subcategory}</div>
-        <div className="product-price"><span className="price-current">${p.price}</span></div>
-      </div>
-    </Link>
-  );
-}
-
-// ── Main Page ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [activeFilter, setActiveFilter] = useState<'all' | 'merch' | 'pianos'>('all');
+  const [slideIdx, setSlideIdx] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { h, m, s } = useCountdown(72);
 
   useEffect(() => {
     fetch('/api/products').then(r => r.json()).then(setProducts).catch(() => {});
   }, []);
+
+  const pianos = products.filter(p => p.category === 'pianos');
+  const merch = products.filter(p => p.category === 'merch');
+
+  // Hero carousel — only keyboards
+  const heroSlides = pianos.length ? pianos : products;
+
+  const goSlide = useCallback((n: number) => {
+    setSlideIdx(n);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setSlideIdx(i => (i + 1) % Math.max(heroSlides.length, 1)), 5000);
+  }, [heroSlides.length]);
+
+  useEffect(() => {
+    if (!heroSlides.length) return;
+    timerRef.current = setTimeout(() => setSlideIdx(i => (i + 1) % heroSlides.length), 5000);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [heroSlides.length]);
 
   useEffect(() => {
     const btn = document.getElementById('scroll-top-btn');
@@ -155,14 +59,27 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const pianos = products.filter(p => p.category === 'pianos');
-  const merch = products.filter(p => p.category === 'merch');
+  // Current slide product
+  const slide = heroSlides[slideIdx] ?? null;
+  const slideImg = slide?.images.find(i => i.is_primary) ?? slide?.images[0];
 
-  // Section 1 carousel: show all products (merch first, then pianos)
-  const carouselProducts = [...merch, ...pianos];
+  // Side panels — adjacent slides
+  const leftSlide  = heroSlides[(slideIdx - 1 + heroSlides.length) % Math.max(heroSlides.length, 1)] ?? slide;
+  const rightSlide = heroSlides[(slideIdx + 1) % Math.max(heroSlides.length, 1)] ?? slide;
+  const leftImg    = leftSlide?.images.find(i => i.is_primary) ?? leftSlide?.images[0];
+  const rightImg   = rightSlide?.images.find(i => !i.is_primary) ?? rightSlide?.images[1] ?? rightSlide?.images[0];
 
-  // Section 2 grid: filtered
-  const gridProducts = activeFilter === 'all' ? products : products.filter(p => p.category === activeFilter);
+  // Merch category tiles for Section 2
+  const categoryTiles = [
+    { key: 'all',     label: 'All products',   count: products.length,       href: '/collections/merch',  product: products[0] },
+    { key: 'merch',   label: 'Merch',           count: merch.length,          href: '/collections/merch',  product: merch[0] },
+    { key: 'hoodies', label: 'Hoodies',         count: merch.length,          href: '/collections/merch',  product: merch[0] },
+    { key: 'ds60',    label: 'DS 6.0 Series',   count: pianos.filter(p => p.subcategory?.includes('6.0')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('6.0')) },
+    { key: 'ds55',    label: 'DS 5.5',          count: pianos.filter(p => p.subcategory?.includes('5.5')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('5.5')) },
+    { key: 'go',      label: 'DreamPlay Go',    count: pianos.filter(p => p.subcategory?.includes('Go')).length,  href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('Go')) },
+    { key: 'gold',    label: 'Gold Edition',    count: pianos.filter(p => p.name?.toLowerCase().includes('gold')).length, href: '/collections/pianos', product: pianos.find(p => p.name?.toLowerCase().includes('gold')) },
+    { key: 'limited', label: 'Limited Edition', count: products.filter(p => p.badge === 'Limited Stock' || p.badge === 'Coming Soon').length, href: '/collections/pianos', product: pianos.find(p => p.badge === 'Coming Soon') },
+  ];
 
   return (
     <>
@@ -172,7 +89,7 @@ export default function HomePage() {
         <a href="https://dreamplay-pianos.myshopify.com/collections/all" target="_blank" rel="noopener">Shop now</a>
       </div>
 
-      {/* Header */}
+      {/* ── Header ── */}
       <header className="site-header">
         <div className="container">
           <div className="header-inner">
@@ -229,14 +146,152 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ════════════════════════════════════════════════════════
-          SECTION 1: Hero Product Carousel
-          Full-width, auto-advances every 5s, left = large product
-          image, right = product name / price / CTAs
-          ════════════════════════════════════════════════════════ */}
-      <section aria-label="Featured products">
-        <HeroCarousel products={carouselProducts} />
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 1: 3-Panel Mosaic Hero — Keyboards
+          Layout:  [left side panel] [CENTER — large + text overlay] [right side panel]
+          Center auto-advances through keyboard products every 5s
+          ══════════════════════════════════════════════════════════════ */}
+      <section className="mosaic-hero" aria-label="Featured keyboards">
+
+        {/* LEFT side panel — previous slide */}
+        <Link
+          href={leftSlide ? `/products/${leftSlide.slug}` : '/collections/pianos'}
+          className="mosaic-panel mosaic-side mosaic-left"
+          onClick={() => goSlide((slideIdx - 1 + Math.max(heroSlides.length, 1)) % Math.max(heroSlides.length, 1))}
+        >
+          {leftImg
+            ? <img src={leftImg.url} alt={leftSlide?.name ?? ''} loading="eager" />
+            : <div className="mosaic-placeholder" />}
+          <div className="mosaic-side-overlay" />
+          <span className="mosaic-side-arrow" aria-hidden="true">‹</span>
+        </Link>
+
+        {/* CENTER — large panel with text overlay + carousel dots */}
+        <Link
+          href={slide ? `/products/${slide.slug}` : '/collections/pianos'}
+          className="mosaic-panel mosaic-center"
+        >
+          {slideImg
+            ? <img key={slideImg.url} src={slideImg.url} alt={slide?.name ?? ''} loading="eager" className="mosaic-center-img" />
+            : <div className="mosaic-placeholder" />}
+
+          {/* Dark gradient overlay */}
+          <div className="mosaic-overlay" aria-hidden="true" />
+
+          {/* Text block — bottom-left, big bold white */}
+          <div className="mosaic-content">
+            <div className="mosaic-eyebrow">{slide?.badge ?? 'Pre-Order'} · DreamPlay</div>
+            <h1 className="mosaic-headline">
+              PLAY WITHOUT<br />LIMITS.
+            </h1>
+            <span className="mosaic-cta-btn">
+              {slide?.category === 'pianos' ? 'Pre-order Now' : 'Shop Now'} →
+            </span>
+          </div>
+
+          {/* Slide arrows on sides of center panel */}
+          <button
+            className="mosaic-center-arrow mosaic-center-prev"
+            onClick={e => { e.preventDefault(); goSlide((slideIdx - 1 + heroSlides.length) % Math.max(heroSlides.length, 1)); }}
+            aria-label="Previous"
+          >‹</button>
+          <button
+            className="mosaic-center-arrow mosaic-center-next"
+            onClick={e => { e.preventDefault(); goSlide((slideIdx + 1) % Math.max(heroSlides.length, 1)); }}
+            aria-label="Next"
+          >›</button>
+
+          {/* Dot indicators */}
+          <div className="mosaic-dots" aria-hidden="true">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                className={`mosaic-dot${i === slideIdx ? ' active' : ''}`}
+                onClick={e => { e.preventDefault(); goSlide(i); }}
+              />
+            ))}
+          </div>
+        </Link>
+
+        {/* RIGHT side panel — next slide */}
+        <Link
+          href={rightSlide ? `/products/${rightSlide.slug}` : '/collections/pianos'}
+          className="mosaic-panel mosaic-side mosaic-right"
+          onClick={() => goSlide((slideIdx + 1) % Math.max(heroSlides.length, 1))}
+        >
+          {rightImg
+            ? <img src={rightImg.url} alt={rightSlide?.name ?? ''} loading="eager" />
+            : <div className="mosaic-placeholder" />}
+          <div className="mosaic-side-overlay" />
+          <span className="mosaic-side-arrow" aria-hidden="true">›</span>
+        </Link>
+
+        {/* Social sidebar — left edge, matching screenshot */}
+        <div className="social-sidebar" aria-label="Social links">
+          <a href="https://www.instagram.com/dreamplaypianos" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@dreamplaypianos" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://youtube.com/@dreamplaypianos" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          Brand statement — "We believe in the power of music."
+          Matches screenshot layout: big heading left, body text right
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="brand-section reveal">
+        <div className="brand-left">
+          <h2 className="brand-heading">
+            We believe in the<br />
+            <span className="underline-accent">power of music.</span>
+          </h2>
+          <Link href="/collections/pianos" className="brand-cta-link">Pre-order →</Link>
+        </div>
+        <div className="brand-right">
+          <p className="brand-body">
+            DreamPlay Pianos is a piano brand launched with the mission to make premium piano experiences accessible to every musician. We provide aspiring piano players with access to high-quality instruments, learning resources, and a community of like-minded musicians.
+            <br /><br />
+            Whether you&apos;re practicing, performing, or just repping the brand you love — DreamPlay adapts to your world.
+          </p>
+          <div className="brand-social">
+            <a href="https://www.instagram.com/dreamplaypianos" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@dreamplaypianos" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://youtube.com/@dreamplaypianos" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 2: Horizontal category / merch tile row
+          Matches screenshot: scrollable tiles with product thumbnail +
+          category name + count + arrow →
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="category-row">
+        <div className="category-row-inner">
+          {categoryTiles.map((tile, i) => {
+            const img = tile.product?.images.find(pi => pi.is_primary) ?? tile.product?.images[0];
+            return (
+              <Link href={tile.href} key={tile.key} className={`category-tile${i === 0 ? ' all-tile' : ''}`}>
+                <div className="category-tile-img">
+                  {img
+                    ? <img src={img.url} alt={tile.label} loading="lazy" />
+                    : <div style={{ width: '100%', height: '100%', background: 'var(--bg-3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>
+                        {i === 0 ? '🛍' : i <= 2 ? '👕' : '🎹'}
+                      </div>}
+                </div>
+                <div className="category-tile-name">{tile.label}</div>
+                <div className="category-tile-count">{tile.count} product{tile.count !== 1 ? 's' : ''}</div>
+                <span className="category-tile-arrow" aria-hidden="true">→</span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Scrolling text marquee */}
       <div className="text-marquee" aria-hidden="true">
@@ -249,68 +304,74 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ════════════════════════════════════════════════════════
-          SECTION 2: "Browse our latest products" — thumbnail grid
-          Filter tabs: All · Merch · Keyboards
-          ════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '56px 0' }}>
-        <div className="container">
-          {/* Section header */}
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 28, flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--text-muted)', marginBottom: 8 }}>DreamPlay Store</div>
-              <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 900, letterSpacing: '-1px', lineHeight: 1 }}>
-                Browse our latest products
-              </h2>
+      {/* ── Merch product cards ── */}
+      {merch.length > 0 && (
+        <section className="products-section">
+          <div className="container">
+            <div className="section-header reveal">
+              <h2 className="section-title">Merch &amp; Apparel</h2>
+              <Link href="/collections/merch" className="view-all-link">View all →</Link>
             </div>
-            {/* Filter tabs */}
-            <div style={{ display: 'flex', gap: 6 }}>
-              {(['all', 'merch', 'pianos'] as const).map(f => (
-                <button
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  style={{
-                    padding: '7px 18px', fontSize: 13, fontWeight: 600, borderRadius: 20,
-                    border: activeFilter === f ? 'none' : '1px solid var(--border-2)',
-                    background: activeFilter === f ? '#111' : 'transparent',
-                    color: activeFilter === f ? '#fff' : 'var(--text-muted)',
-                    cursor: 'pointer', transition: 'all 0.15s', textTransform: 'capitalize',
-                  }}
-                >
-                  {f === 'all' ? `All (${products.length})` : f === 'merch' ? `Merch (${merch.length})` : `Keyboards (${pianos.length})`}
-                </button>
-              ))}
+            <div className="products-scroll">
+              {merch.map((p, i) => {
+                const img = p.images.find(pi => pi.is_primary) ?? p.images[0];
+                return (
+                  <Link href={`/products/${p.slug}`} key={p.slug} className={`product-card reveal reveal-d${Math.min(i, 3) as 0|1|2|3}`}>
+                    <div className="product-card-img">
+                      {img && <img src={img.url} alt={p.name} loading="lazy" />}
+                      {p.badge && <span className="product-badge badge-new">{p.badge}</span>}
+                      <button className="quick-buy-btn" onClick={e => { e.preventDefault(); window.open(p.shopify_url || 'https://dreamplay-pianos.myshopify.com', '_blank'); }}>Buy Now →</button>
+                    </div>
+                    <div className="product-card-info">
+                      <div className="product-card-name">{p.name}</div>
+                      <div className="product-card-sub">{p.subcategory}</div>
+                      <div className="product-price"><span className="price-current">${p.price}</span></div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Product grid */}
-          <div className="products-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 20 }}>
-            {gridProducts.map(p => <ProductCard key={p.slug} p={p} />)}
+      {/* ── Keyboards ── */}
+      {pianos.length > 0 && (
+        <section className="products-section" id="keyboards">
+          <div className="container">
+            <div className="section-header reveal">
+              <h2 className="section-title">Keyboards</h2>
+              <Link href="/collections/pianos" className="view-all-link">View all →</Link>
+            </div>
+            <div className="products-scroll">
+              {pianos.map((p, i) => {
+                const img = p.images.find(pi => pi.is_primary) ?? p.images[0];
+                return (
+                  <Link href={`/products/${p.slug}`} key={p.slug} className={`product-card reveal reveal-d${Math.min(i, 3) as 0|1|2|3}`}>
+                    <div className="product-card-img">
+                      {img && <img src={img.url} alt={p.name} loading="lazy" />}
+                      {p.badge && <span className={`product-badge ${p.badge === 'Coming Soon' ? 'badge-soon' : 'badge-new'}`}>{p.badge}</span>}
+                      <button className="quick-buy-btn" onClick={e => { e.preventDefault(); window.open(p.shopify_url || 'https://dreamplay-pianos.myshopify.com', '_blank'); }}>Pre-order →</button>
+                    </div>
+                    <div className="product-card-info">
+                      <div className="product-card-name">{p.name}</div>
+                      <div className="product-card-sub">{p.subcategory}</div>
+                      <div className="product-price"><span className="price-current">${p.price}</span></div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
+        </section>
+      )}
 
-          {gridProducts.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--text-muted)' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>🛍</div>
-              <p>Run <code style={{ background: 'var(--bg-2)', padding: '2px 8px', borderRadius: 4 }}>pnpm seed</code> to load products</p>
-            </div>
-          )}
-
-          {gridProducts.length > 0 && (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
-              <Link href={activeFilter === 'pianos' ? '/collections/pianos' : '/collections/merch'} className="btn btn-secondary btn-lg">
-                Shop all {activeFilter === 'all' ? 'products' : activeFilter} →
-              </Link>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── Flash Sale band ────────────────────────────────────── */}
+      {/* ── Flash Sale ── */}
       <section className="flash-band" id="flash-sale">
         <div className="container">
           <div className="flash-band-inner">
-            <div>
-              <div className="flash-eyebrow"><span className="flash-dot" aria-hidden="true" />Limited Time</div>
+            <div className="reveal">
+              <div className="flash-eyebrow"><span className="flash-dot" />Limited Time</div>
               <div className="flash-title">20% Off.<br />Everything.</div>
               <div className="countdown" role="timer" aria-label="Sale countdown">
                 {[['Hours', h], ['Mins', m], ['Secs', s]].map(([label, val]) => (
@@ -320,11 +381,9 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <Link href="https://dreamplay-pianos.myshopify.com/collections/all" className="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                Shop the Sale →
-              </Link>
+              <Link href="https://dreamplay-pianos.myshopify.com/collections/all" className="btn btn-primary btn-lg" target="_blank" rel="noopener">Shop the Sale →</Link>
             </div>
-            <div className="products-scroll">
+            <div className="products-scroll reveal reveal-d2">
               {[...merch, ...pianos].slice(0, 4).map(p => {
                 const img = p.images.find(pi => pi.is_primary) ?? p.images[0];
                 return (
