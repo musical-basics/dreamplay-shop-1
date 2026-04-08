@@ -662,10 +662,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ── Shopify-style PDP ──────────────────────────────── */
-/* Full-width layout: photo mosaic (65%) | sticky info panel (35%) */
+/* Full-width layout: photo gallery (auto) | sticky info panel (fixed width) */
 .pdp-shopify-outer {
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr 420px;
   min-height: 100vh;
   align-items: start;
 }
@@ -673,39 +673,53 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Left: scrollable photo gallery */
 .pdp-gallery {
   border-right: 1px solid var(--border);
-  overflow-y: auto;
 }
 
-/* Masonry-style photo grid matching Shopify screenshot:
-   - First image: tall, spans left column, full height
-   - Remaining images: 2-across grid on the right portion */
+/* Two-column gallery matching Shopify:
+   LEFT half  = one tall portrait (no crop, full model visible)
+   RIGHT half = 2-col sub-grid of additional images (also no crop) */
 .pdp-gallery-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  grid-auto-rows: 340px;
-  gap: 3px;
+  grid-template-columns: 1fr 1fr;   /* left portrait col | right 2-col area */
+  gap: 4px;
+  align-items: start;
 }
 
+/* First child: the large portrait — spans full height of the left column */
+.pdp-gallery-item.featured {
+  grid-column: 1;          /* left column only */
+  grid-row: 1 / 999;       /* stretch to fill however many rows the right side has */
+}
+
+/* All items: no fixed height, image shows fully at natural ratio */
 .pdp-gallery-item {
   overflow: hidden;
-  cursor: zoom-in;
   position: relative;
   background: var(--bg-2);
+  cursor: zoom-in;
 }
 
 .pdp-gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;          /* NEVER crop — natural portrait ratio */
+  display: block;
   transition: transform 0.4s var(--ease);
 }
-.pdp-gallery-item:hover img { transform: scale(1.02); }
+.pdp-gallery-item:hover img { transform: scale(1.015); }
 
-/* Featured first image: spans 2 rows, left column */
-.pdp-gallery-item.featured {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  cursor: pointer;
+/* Right side: a 2-col sub-grid wrapping the non-featured images */
+.pdp-gallery-right {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  align-items: start;
+}
+
+.pdp-gallery-right .pdp-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Drop zone hint overlay */
@@ -728,19 +742,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-height: calc(100vh - 60px);
   overflow-y: auto;
   scrollbar-width: none;
+  border-left: 1px solid var(--border);
 }
 .pdp-info-panel::-webkit-scrollbar { display: none; }
 .pdp-info-panel a.btn { text-decoration: none; }
 
-/* Mobile: stack vertically */
+/* Mobile: stack gallery then panel */
 @media (max-width: 960px) {
   .pdp-shopify-outer { grid-template-columns: 1fr; }
   .pdp-gallery { border-right: none; }
-  .pdp-gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 260px; }
-  .pdp-gallery-item.featured { grid-column: 1; grid-row: 1 / 3; }
-  .pdp-info-panel { position: static; max-height: none; padding: 24px 20px; }
+  .pdp-info-panel { position: static; max-height: none; padding: 24px 20px; border-left: none; border-top: 1px solid var(--border); }
 }
 @media (max-width: 600px) {
-  .pdp-gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 320px; }
-  .pdp-gallery-item.featured { grid-row: 1 / 2; }
+  .pdp-gallery-grid { grid-template-columns: 1fr; }
+  .pdp-gallery-item.featured { grid-row: auto; }
+  .pdp-gallery-right { grid-template-columns: 1fr 1fr; }
 }
