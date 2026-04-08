@@ -4,7 +4,7 @@
   "description": "DreamPlay Pianos — Concept theme emulation & asset pipeline",
   "private": true,
   "scripts": {
-    "dev": "npx serve . --port 3000 --no-clipboard",
+    "dev": "npx serve . -l 4000",
     "watch": "node scripts/organize-assets.js",
     "seed": "node scripts/organize-assets.js --seed",
     "repomix": "npx repomix --config repomix.config.json"
