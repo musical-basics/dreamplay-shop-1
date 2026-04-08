@@ -1,0 +1,16 @@
+{
+  "name": "dreamplay-shopify-concept",
+  "version": "1.0.0",
+  "description": "DreamPlay Pianos — Concept theme emulation & asset pipeline",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . --port 3000 --no-clipboard",
+    "watch": "node scripts/organize-assets.js",
+    "seed": "node scripts/organize-assets.js --seed",
+    "repomix": "npx repomix --config repomix.config.json"
+  },
+  "keywords": ["dreamplay", "pianos", "shopify", "concept-theme"],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

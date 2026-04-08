@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamPlay Pianos — Play Without Limits</title>
+  <meta name="description" content="DreamPlay Pianos — premium digital keyboards built for the next generation of musicians. Shop the DS 6.0, DS 5.5, Piano Bundle 2026, and more. Free shipping. Ships August 2026." />
+  <meta property="og:title" content="DreamPlay Pianos — Play Without Limits" />
+  <meta property="og:description" content="Premium digital keyboards for the next generation of musicians." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎹</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/mobile.css" />
+</head>
+<body>
+
+<!-- ── Announcement Bar ──────────────────────────────────────── -->
+<div class="announcement-bar" role="banner" aria-label="Promotional announcement">
+  ⚡ Flash Sale — 20% Off All Keyboards! Ends in
+  <span class="timer">
+    <span id="ann-hours">72</span><span class="timer-sep">h</span>
+    &nbsp;<span id="ann-mins">00</span><span class="timer-sep">m</span>
+    &nbsp;<span id="ann-secs">00</span><span class="timer-sep">s</span>
+  </span>
+  &nbsp;·&nbsp; Free US Shipping on Orders $100+
+</div>
+
+<!-- ── Header ────────────────────────────────────────────────── -->
+<header class="site-header is-transparent" role="banner">
+  <div class="container">
+    <div class="header-inner">
+
+      <!-- Logo -->
+      <a href="#" class="header-logo" aria-label="DreamPlay Pianos Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="28" height="28" rx="6" fill="#d4a843"/>
+          <text x="14" y="20" font-size="16" text-anchor="middle" fill="#000" font-family="serif" font-weight="bold">♪</text>
+        </svg>
+        <span class="logo-text">Dream<span>Play</span></span>
+      </a>
+
+      <!-- Nav -->
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-item">
+          <a href="#products" class="nav-link active" id="nav-keyboards">Keyboards</a>
+          <div class="mega-menu" role="menu" aria-label="Keyboards dropdown">
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard" class="mega-menu-item" role="menuitem">
+              <img src="assets/images/ds60/DS60-black-angled.png" alt="DS 6.0 Pro Keyboard" loading="lazy" />
+              <span class="menu-item-name">DS 6.0 Pro</span>
+              <span class="menu-item-price">From $299</span>
+            </a>
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard-only" class="mega-menu-item" role="menuitem">
+              <img src="assets/images/ds55/DS55-white-angled.png" alt="DS 5.5 Keyboard" loading="lazy" />
+              <span class="menu-item-name">DS 5.5</span>
+              <span class="menu-item-price">From $199</span>
+            </a>
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-piano-bundle-2026" class="mega-menu-item" role="menuitem">
+              <img src="assets/images/bundles/bundle-main.jpg" alt="Piano Bundle 2026" loading="lazy" />
+              <span class="menu-item-name">Piano Bundle</span>
+              <span class="menu-item-price">From $349</span>
+            </a>
+          </div>
+        </div>
+        <a href="#bundle" class="nav-link" id="nav-bundles">Bundles</a>
+        <a href="https://dreamplay-pianos.myshopify.com/collections/all" class="nav-link" id="nav-merch">Merch</a>
+        <a href="#" class="nav-link" id="nav-about">About</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <button class="icon-btn" data-search-open aria-label="Open search" id="header-search-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="https://dreamplay-pianos.myshopify.com/account" class="icon-btn" aria-label="Account">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="icon-btn" data-cart-open aria-label="Open cart" id="header-cart-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" aria-live="polite">0</span>
+        </button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger-btn">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Search Drawer ──────────────────────────────────────────── -->
+<div class="search-drawer" role="search" aria-label="Site search">
+  <div class="container">
+    <div class="search-input-wrap">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" class="search-input" placeholder="Search keyboards, bundles, merch…" aria-label="Search" id="search-input" />
+      <button data-search-close aria-label="Close search" id="search-close-btn" style="color:var(--color-text-muted);font-size:22px;padding:8px;">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Mobile Nav ─────────────────────────────────────────────── -->
+<div class="mobile-nav" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav-drawer">
+    <button class="mobile-nav-close" aria-label="Close menu" id="mobile-nav-close">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="#" class="header-logo" style="margin-bottom:8px;">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect width="28" height="28" rx="6" fill="#d4a843"/><text x="14" y="20" font-size="16" text-anchor="middle" fill="#000" font-family="serif" font-weight="bold">♪</text></svg>
+      <span class="logo-text">Dream<span>Play</span></span>
+    </a>
+    <nav class="mobile-nav-links" aria-label="Mobile navigation links">
+      <a href="#products" id="mob-keyboards">🎹 Keyboards</a>
+      <a href="#bundle" id="mob-bundles">📦 Bundles</a>
+      <a href="https://dreamplay-pianos.myshopify.com/collections/all" id="mob-merch">👕 Merch</a>
+      <a href="#flash-sale" id="mob-sale">⚡ Flash Sale</a>
+      <a href="#" id="mob-about">✦ About</a>
+    </nav>
+    <div style="padding-top:var(--space-4);border-top:1px solid var(--color-border);">
+      <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard" class="btn btn-primary" style="width:100%;justify-content:center;" id="mob-shop-cta">Shop Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Hero Slideshow ─────────────────────────────────────────── -->
+<section class="hero" aria-label="Hero slideshow" id="hero">
+
+  <div class="hero-slides" aria-live="polite">
+
+    <!-- Slide 1: DS 6.0 Black -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+      <div class="hero-slide-bg" style="background-image:url('assets/images/hero/hero-gradient.jpg');" aria-hidden="true"></div>
+      <div class="hero-slide-overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label label">New — Ships August 2026</span>
+          <h1 class="hero-title">Play Without<br>Limits.</h1>
+          <p class="hero-subtitle">The DS 6.0 Pro Keyboard — 88 weighted keys, studio-grade sound, built for the next generation of musicians.</p>
+          <div class="hero-actions">
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard" class="btn btn-primary btn-lg" id="hero-shop-btn-1">Shop DS 6.0 Pro</a>
+            <a href="#products" class="btn btn-secondary btn-lg" id="hero-explore-btn-1">Explore All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Flash Sale -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+      <div class="hero-slide-bg" style="background-image:url('assets/images/hero/hero-4.jpg');" aria-hidden="true"></div>
+      <div class="hero-slide-overlay" style="background:linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.85) 100%);" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label label" style="border-color:rgba(231,76,60,0.4);color:#e74c3c;">⚡ Limited Time — Flash Sale</span>
+          <h1 class="hero-title">20% Off.<br>Today Only.</h1>
+          <p class="hero-subtitle">Reserve your DreamPlay keyboard before the sale ends. Ships August 2026 — lock in your price now.</p>
+          <div class="hero-actions">
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-50-reservation" class="btn btn-primary btn-lg" id="hero-sale-btn">Claim Your Discount</a>
+            <a href="#flash-sale" class="btn btn-secondary btn-lg" id="hero-timer-btn">See Offer →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Bundle -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+      <div class="hero-slide-bg" style="background-image:url('assets/images/hero/hero-2.jpg');" aria-hidden="true"></div>
+      <div class="hero-slide-overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label label">Best Value</span>
+          <h1 class="hero-title">Everything<br>You Need.</h1>
+          <p class="hero-subtitle">The Piano Bundle 2026 — keyboard, stand, sustain pedal, and headphones. Ready to play, right out of the box.</p>
+          <div class="hero-actions">
+            <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-piano-bundle-2026" class="btn btn-primary btn-lg" id="hero-bundle-btn">Shop the Bundle</a>
+            <a href="#bundle" class="btn btn-secondary btn-lg" id="hero-bundle-learn">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hero-slides -->
+
+  <!-- Controls -->
+  <div class="hero-controls" aria-label="Slideshow controls">
+    <button class="hero-nav-btn hero-prev" aria-label="Previous slide" id="hero-prev-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="hero-dots" role="tablist" aria-label="Slide navigation">
+      <button class="hero-dot" role="tab" aria-label="Go to slide 1" id="hero-dot-1"></button>
+      <button class="hero-dot" role="tab" aria-label="Go to slide 2" id="hero-dot-2"></button>
+      <button class="hero-dot" role="tab" aria-label="Go to slide 3" id="hero-dot-3"></button>
+    </div>
+    <button class="hero-nav-btn hero-next" aria-label="Next slide" id="hero-next-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <svg width="14" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 14 20"><rect x="1" y="1" width="12" height="18" rx="6"/><circle cx="7" cy="6" r="1.5" fill="currentColor"/></svg>
+    Scroll
+  </div>
+
+</section>
+
+<!-- ── Marquee Trust Band ─────────────────────────────────────── -->
+<div class="marquee-band" aria-label="Key features" role="complementary">
+  <div class="marquee-track" aria-hidden="true">
+
+    <!-- Two copies for seamless loop -->
+    <template id="marquee-items-tpl">
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        Free US Shipping
+        <span class="dot"></span>
+      </div>
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        88 Weighted Keys
+        <span class="dot"></span>
+      </div>
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        1-Year Warranty
+        <span class="dot"></span>
+      </div>
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        30-Day Returns
+        <span class="dot"></span>
+      </div>
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        Ships August 2026
+        <span class="dot"></span>
+      </div>
+      <div class="marquee-item">
+        <svg width="14" height="14" fill="var(--color-accent)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        Studio-Grade Sound
+        <span class="dot"></span>
+      </div>
+    </template>
+  </div>
+</div>
+
+<!-- ── Featured Products ──────────────────────────────────────── -->
+<section class="section" id="products" aria-label="Featured products">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Our Line-Up</p>
+        <h2 class="section-title">Featured Products</h2>
+      </div>
+      <a href="https://dreamplay-pianos.myshopify.com/collections/all" class="btn btn-ghost" id="view-all-products-btn">View all <span class="arrow">→</span></a>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Product: DS 6.0 Pro Keyboard -->
+      <article class="product-card reveal" aria-label="DS 6.0 Pro Keyboard product">
+        <div class="product-card-img">
+          <img src="assets/images/ds60/DS60-black-angled.png" alt="DreamPlay DS 6.0 Pro Keyboard in black angled view" loading="lazy" />
+          <span class="product-badge badge-sale" aria-label="Sale">Sale</span>
+          <button class="quick-buy" aria-label="Quick buy DS 6.0 Pro Keyboard">Quick Buy →</button>
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-name">DS 6.0 Pro Keyboard</h3>
+          <p class="product-card-sub">88 weighted keys · Ships Aug 2026</p>
+          <div class="product-card-price">
+            <span class="price-current">$239</span>
+            <span class="price-original">$299</span>
+            <span class="price-save">Save $60</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product: Piano Bundle 2026 -->
+      <article class="product-card reveal reveal-delay-1" aria-label="Piano Bundle 2026 product">
+        <div class="product-card-img">
+          <img src="assets/images/bundles/bundle-main.jpg" alt="DreamPlay Piano Bundle 2026 — keyboard, stand and accessories" loading="lazy" />
+          <span class="product-badge badge-new" aria-label="New">New</span>
+          <button class="quick-buy" aria-label="Quick buy Piano Bundle 2026">Quick Buy →</button>
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-name">Piano Bundle 2026</h3>
+          <p class="product-card-sub">Keyboard + Stand + Pedal + Headphones</p>
+          <div class="product-card-price">
+            <span class="price-current">$349</span>
+            <span class="price-original">$449</span>
+            <span class="price-save">Save $100</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product: DS 6.0 (White) -->
+      <article class="product-card reveal reveal-delay-2" aria-label="DS 6.0 Pro Keyboard White product">
+        <div class="product-card-img">
+          <img src="assets/images/ds60/DS60-white-angled.png" alt="DreamPlay DS 6.0 Pro Keyboard in white angled view" loading="lazy" />
+          <span class="product-badge badge-limited" aria-label="Limited">Limited Stock</span>
+          <button class="quick-buy" aria-label="Quick buy DS 6.0 Pro White">Quick Buy →</button>
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-name">DS 6.0 Pro — White</h3>
+          <p class="product-card-sub">88 weighted keys · Ivory finish</p>
+          <div class="product-card-price">
+            <span class="price-current">$239</span>
+            <span class="price-original">$299</span>
+            <span class="price-save">Save $60</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product: ICON Black Hoodie -->
+      <article class="product-card reveal reveal-delay-3" aria-label="DreamPlay ICON Black Hoodie product">
+        <div class="product-card-img" style="background:#1a1a1a;">
+          <div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:80px;opacity:0.3;" aria-hidden="true">👕</div>
+          <span class="product-badge badge-new" aria-label="New">New</span>
+          <button class="quick-buy" aria-label="Quick buy ICON Black Hoodie">Quick Buy →</button>
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-name">ICON Black Hoodie</h3>
+          <p class="product-card-sub">Premium heavyweight · Unisex</p>
+          <div class="product-card-price">
+            <span class="price-current">$58</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /products-grid -->
+
+  </div>
+</section>
+
+<!-- ── Image with Text: DS 6.0 Flagship ──────────────────────── -->
+<section class="section" id="ds60-feature" aria-label="DS 6.0 feature section">
+  <div class="container">
+    <div class="split-section reveal">
+      <div class="split-img">
+        <img src="assets/images/ds60/DS60-with-stand-front.jpg" alt="DreamPlay DS 6.0 keyboard with studio stand in professional setting" loading="lazy" />
+      </div>
+      <div class="split-content">
+        <div>
+          <p class="section-eyebrow">Flagship Model</p>
+          <h2 class="heading-lg">Engineered for<br>Serious Players.</h2>
+        </div>
+        <p class="body-lg text-muted">The DS 6.0 Pro isn't your average digital keyboard. Every key, every patch, every detail was designed to help you play like a professional — right out of the box.</p>
+        <div class="split-features">
+          <div class="split-feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </div>
+            <div class="feature-text">
+              <strong>88 Hammer-Action Keys</strong>
+              Graded hammer action weighted keys — the same feel as a real acoustic grand piano.
+            </div>
+          </div>
+          <div class="split-feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </div>
+            <div class="feature-text">
+              <strong>Studio-Grade Sound Engine</strong>
+              256-note polyphony and 800+ instrument voices recorded from world-class instruments.
+            </div>
+          </div>
+          <div class="split-feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="feature-text">
+              <strong>Bluetooth + USB Connectivity</strong>
+              Connect to your iPad, Mac, or PC wirelessly. Compatible with all major DAWs.
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard" class="btn btn-primary" id="split-shop-btn">Reserve Yours — $239</a>
+          <a href="#" class="btn btn-ghost" id="split-learn-btn">Read Specs <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Flash Sale Section ─────────────────────────────────────── -->
+<section class="flash-sale" id="flash-sale" aria-label="Flash sale section">
+  <div class="container">
+    <div class="flash-sale-inner">
+
+      <!-- Left: copy + countdown -->
+      <div class="flash-sale-content reveal">
+        <div class="flash-sale-label">
+          <span class="flash-dot" aria-hidden="true"></span>
+          <span class="label text-muted">Flash Sale — Limited Time</span>
+        </div>
+        <h2 class="heading-lg">20% Off<br>Everything.</h2>
+        <p class="body-lg text-muted">We're making room for new models. Score the best price on our most popular keyboards before this deal disappears.</p>
+        <div class="countdown" aria-label="Countdown timer" role="timer">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="flash-hours">72</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <span class="countdown-sep" aria-hidden="true">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="flash-mins">00</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <span class="countdown-sep" aria-hidden="true">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="flash-secs">00</span>
+            <span class="countdown-label">Secs</span>
+          </div>
+        </div>
+        <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-50-reservation" class="btn btn-primary btn-lg" id="flash-cta-btn">Shop the Sale →</a>
+      </div>
+
+      <!-- Right: product cards -->
+      <div class="flash-products reveal reveal-delay-2">
+
+        <article class="product-card" aria-label="DS 6.0 Keyboard Reservation flash sale">
+          <div class="product-card-img">
+            <img src="assets/images/ds60/DS60-black-angled.png" alt="DS 6.0 Keyboard in black — flash sale" loading="lazy" />
+            <span class="product-badge badge-sale" aria-label="Sale">–20%</span>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-name">DS 6.0 Keyboard Reservation</h3>
+            <div class="product-card-price">
+              <span class="price-current">$149.50</span>
+              <span class="price-original">~$299</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" aria-label="DS 5.5 Keyboard flash sale">
+          <div class="product-card-img">
+            <img src="assets/images/ds55/DS55-white-angled.png" alt="DS 5.5 Keyboard in white — flash sale" loading="lazy" />
+            <span class="product-badge badge-sale" aria-label="Sale">–20%</span>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-name">DS 5.5 Keyboard</h3>
+            <div class="product-card-price">
+              <span class="price-current">$159.20</span>
+              <span class="price-original">$199</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Scrolling Text Marquee ─────────────────────────────────── -->
+<div class="text-marquee" aria-hidden="true">
+  <div class="text-marquee-track">
+    <!-- Repeated for seamless loop -->
+    <div class="text-marquee-item">DS 6.0 <span class="sep">·</span> DS 5.5 <span class="sep">·</span> DreamPlay Go <span class="sep">·</span> Piano Bundle <span class="sep">·</span> Free Shipping <span class="sep">·</span> Limited Stock</div>
+    <div class="text-marquee-item">DS 6.0 <span class="sep">·</span> DS 5.5 <span class="sep">·</span> DreamPlay Go <span class="sep">·</span> Piano Bundle <span class="sep">·</span> Free Shipping <span class="sep">·</span> Limited Stock</div>
+    <div class="text-marquee-item">DS 6.0 <span class="sep">·</span> DS 5.5 <span class="sep">·</span> DreamPlay Go <span class="sep">·</span> Piano Bundle <span class="sep">·</span> Free Shipping <span class="sep">·</span> Limited Stock</div>
+  </div>
+</div>
+
+<!-- ── Testimonials ───────────────────────────────────────────── -->
+<section class="testimonials" aria-label="Customer reviews">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Social Proof</p>
+        <h2 class="section-title">What Players Are Saying</h2>
+      </div>
+    </div>
+
+    <div class="testimonials-track-wrap" role="list" aria-label="Customer testimonials">
+      <div class="testimonials-track">
+
+        <div class="testimonial-card reveal" role="listitem">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p class="testimonial-text">"I've played keyboards for 15 years and the DS 6.0 is the best value I've ever seen. The hammer action feels incredible and the sound engine is genuinely impressive."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">🎹</div>
+            <div>
+              <div class="testimonial-name">Marcus W.</div>
+              <div class="testimonial-role">Professional pianist, Toronto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1" role="listitem">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p class="testimonial-text">"Finally a keyboard that doesn't break the bank but still feels premium. My students love it. The bundle deal was a no-brainer."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">🎼</div>
+            <div>
+              <div class="testimonial-name">Sarah L.</div>
+              <div class="testimonial-role">Music teacher, Los Angeles</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2" role="listitem">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p class="testimonial-text">"Ordered the reservation and the team was super responsive about shipping updates. Can't wait. The design is absolutely gorgeous — very DreamPlay."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">🎵</div>
+            <div>
+              <div class="testimonial-name">James K.</div>
+              <div class="testimonial-role">Bedroom producer, London</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="testimonials-nav" aria-label="Testimonials navigation">
+      <button class="t-nav-dot" aria-label="Go to testimonial 1" id="t-dot-1"></button>
+      <button class="t-nav-dot" aria-label="Go to testimonial 2" id="t-dot-2"></button>
+      <button class="t-nav-dot" aria-label="Go to testimonial 3" id="t-dot-3"></button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Bundle Section ─────────────────────────────────────────── -->
+<section class="bundle-section" id="bundle" aria-label="Piano bundle">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Best Value</p>
+        <h2 class="section-title">The Complete Package</h2>
+      </div>
+    </div>
+
+    <div class="bundle-card reveal">
+      <div>
+        <p class="section-eyebrow" style="margin-bottom:12px;">Piano Bundle 2026</p>
+        <h3 class="heading-md" style="margin-bottom:16px;">Everything Included.<br>Nothing Extra to Buy.</h3>
+        <p class="text-muted body-lg" style="margin-bottom:32px;">We bundled the DS 6.0 Pro with everything beginners and performers need — so you can start playing the day it arrives.</p>
+        <div class="bundle-items">
+          <div class="bundle-item">
+            <img src="assets/images/ds60/DS60-black-angled.png" class="bundle-item-img" alt="DS 6.0 Pro Keyboard" loading="lazy"/>
+            <span class="bundle-item-name">DS 6.0 Pro<br><small style="color:var(--color-accent)">$239</small></span>
+          </div>
+          <span class="bundle-plus" aria-hidden="true">+</span>
+          <div class="bundle-item">
+            <div style="width:120px;height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;opacity:0.6;" aria-hidden="true">🎹</div>
+            <span class="bundle-item-name">X-Stand<br><small style="color:var(--color-accent)">$49</small></span>
+          </div>
+          <span class="bundle-plus" aria-hidden="true">+</span>
+          <div class="bundle-item">
+            <div style="width:120px;height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;opacity:0.6;" aria-hidden="true">🎵</div>
+            <span class="bundle-item-name">Sustain Pedal<br><small style="color:var(--color-accent)">$29</small></span>
+          </div>
+          <span class="bundle-plus" aria-hidden="true">+</span>
+          <div class="bundle-item">
+            <div style="width:120px;height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;opacity:0.6;" aria-hidden="true">🎧</div>
+            <span class="bundle-item-name">Studio Headphones<br><small style="color:var(--color-accent)">$79</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="bundle-cta">
+        <div class="bundle-price-block">
+          <div class="bundle-price-orig">Individual: $396</div>
+          <div class="bundle-price-sale">$349</div>
+          <div class="bundle-save">✓ Save $47 (12% off)</div>
+        </div>
+        <a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-piano-bundle-2026" class="btn btn-primary btn-lg" id="bundle-cta-btn">Add Bundle to Cart →</a>
+        <a href="#" class="btn btn-ghost" id="bundle-learn-more">See what's included <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DreamPlay Image Highlight: Gold Edition ────────────────── -->
+<section class="section" aria-label="DreamPlay Gold Edition">
+  <div class="container">
+    <div class="split-section reverse reveal">
+      <div class="split-content">
+        <div>
+          <p class="section-eyebrow">Coming Soon</p>
+          <h2 class="heading-lg">Introducing the<br><span style="color:var(--color-accent);">Gold Edition.</span></h2>
+        </div>
+        <p class="body-lg text-muted">Our most exclusive instrument yet. The DS 6.0 Gold features a hand-polished champagne finish, gold-plated accents, and a custom engraving option — limited to 50 units worldwide.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--color-text-muted);">
+            <span style="color:var(--color-accent);font-size:18px;">✦</span> Hand-polished champagne finish
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--color-text-muted);">
+            <span style="color:var(--color-accent);font-size:18px;">✦</span> Custom laser engraving included
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--color-text-muted);">
+            <span style="color:var(--color-accent);font-size:18px;">✦</span> Limited to 50 units globally
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="#" class="btn btn-primary" id="gold-notify-btn">Notify Me at Launch</a>
+          <a href="#" class="btn btn-ghost" id="gold-learn-btn">Learn More <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="split-img">
+        <img src="assets/images/ds60/DS60-gold.png" alt="DreamPlay DS 6.0 Gold Edition — limited run with champagne finish" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Trust / Stats Band ─────────────────────────────────────── -->
+<section style="background:var(--color-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding:var(--space-8) 0;" aria-label="Stats and trust signals">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);text-align:center;" class="reveal">
+
+      <div>
+        <div style="font-family:var(--font-heading);font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--color-accent);">500+</div>
+        <div style="font-size:13px;color:var(--color-text-muted);margin-top:4px;">Pre-Orders Placed</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading);font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--color-accent);">4.9★</div>
+        <div style="font-size:13px;color:var(--color-text-muted);margin-top:4px;">Average Rating</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading);font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--color-accent);">30</div>
+        <div style="font-size:13px;color:var(--color-text-muted);margin-top:4px;">Day Return Policy</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading);font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--color-accent);">1yr</div>
+        <div style="font-size:13px;color:var(--color-text-muted);margin-top:4px;">Full Warranty</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">Dream<span>Play</span> Pianos</div>
+        <p class="footer-tagline">Premium digital keyboards built for the next generation of musicians. Real feel. Real sound. Real value.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://www.instagram.com/dreamplaypianos" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@dreamplaypianos" class="social-btn" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://youtube.com/@dreamplaypianos" class="social-btn" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div>
+        <h3 class="footer-col-heading">Shop</h3>
+        <ul class="footer-links">
+          <li><a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard" id="footer-ds60">DS 6.0 Pro Keyboard</a></li>
+          <li><a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-keyboard-only" id="footer-ds55">DS 5.5 Keyboard</a></li>
+          <li><a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-piano-bundle-2026" id="footer-bundle">Piano Bundle 2026</a></li>
+          <li><a href="https://dreamplay-pianos.myshopify.com/products/dreamplay-one-50-reservation" id="footer-reservation">Reservations</a></li>
+          <li><a href="https://dreamplay-pianos.myshopify.com/collections/all" id="footer-all">All Products</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h3 class="footer-col-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-faq">FAQ</a></li>
+          <li><a href="#" id="footer-shipping">Shipping & Delivery</a></li>
+          <li><a href="#" id="footer-returns">Returns & Refunds</a></li>
+          <li><a href="#" id="footer-warranty">Warranty</a></li>
+          <li><a href="#" id="footer-contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="footer-col-heading">Company</h3>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-about">About DreamPlay</a></li>
+          <li><a href="#" id="footer-story">Our Story</a></li>
+          <li><a href="#" id="footer-press">Press</a></li>
+          <li><a href="#" id="footer-affiliate">Affiliate Program</a></li>
+          <li><a href="#" id="footer-careers">Careers</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 DreamPlay Pianos. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#" id="footer-privacy">Privacy Policy</a>
+        <a href="#" id="footer-terms">Terms of Service</a>
+        <a href="#" id="footer-cookies">Cookie Settings</a>
+      </div>
+      <span>Made with ♪ in Los Angeles</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ── Cart Drawer ────────────────────────────────────────────── -->
+<div class="cart-drawer-overlay" aria-hidden="true" data-cart-close></div>
+<div class="cart-drawer" role="dialog" aria-label="Shopping cart" aria-modal="true">
+  <div class="cart-drawer-header">
+    <h2 class="heading-sm">Your Cart</h2>
+    <button data-cart-close aria-label="Close cart" id="cart-close-btn">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-drawer-body">
+    <div class="cart-empty">
+      <div class="cart-empty-icon" aria-hidden="true">🎹</div>
+      <p>Your cart is empty</p>
+      <a href="https://dreamplay-pianos.myshopify.com/collections/all" class="btn btn-secondary btn-sm" id="cart-continue-btn">Continue Shopping</a>
+    </div>
+  </div>
+  <div class="cart-drawer-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cart-subtotal-amount">$0.00</span>
+    </div>
+    <a href="https://dreamplay-pianos.myshopify.com/cart" class="btn btn-primary" style="width:100%;justify-content:center;" id="cart-checkout-btn">Proceed to Checkout →</a>
+    <a href="https://dreamplay-pianos.myshopify.com/collections/all" class="btn btn-ghost" style="justify-content:center;" id="cart-shop-btn">Continue Shopping <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<!-- ── Newsletter Popup ───────────────────────────────────────── -->
+<div class="newsletter-popup" role="dialog" aria-label="Newsletter signup" aria-modal="true">
+  <div class="newsletter-popup-overlay" aria-hidden="true"></div>
+  <div class="newsletter-popup-box">
+    <button class="newsletter-popup-close" aria-label="Close newsletter popup" id="newsletter-close-btn">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="newsletter-emoji" aria-hidden="true">🎹</div>
+    <div>
+      <p class="section-eyebrow" style="margin-bottom:8px;">Exclusive Offer</p>
+      <h3 class="heading-sm" style="margin-bottom:8px;">Get 10% Off<br>Your First Order</h3>
+      <p class="body-sm text-muted" style="margin-top:8px;">Join 2,000+ musicians. Get early access to new products, flash sales, and tips.</p>
+    </div>
+    <form class="newsletter-form" id="newsletter-form" novalidate>
+      <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address" id="newsletter-email" required />
+      <button type="submit" class="btn btn-primary" id="newsletter-submit-btn">Join</button>
+    </form>
+    <p class="newsletter-disclaimer">No spam, ever. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- ── Scroll to Top ──────────────────────────────────────────── -->
+<button class="scroll-top" aria-label="Scroll to top" id="scroll-top-btn">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- ── Scripts ────────────────────────────────────────────────── -->
+<script>
+  // Duplicate marquee items for seamless infinite scroll
+  (function() {
+    const track = document.querySelector('.marquee-track');
+    const tpl = document.getElementById('marquee-items-tpl');
+    if (!track || !tpl) return;
+    // Clone the template content twice for seamless loop
+    for (let i = 0; i < 2; i++) {
+      const clone = tpl.content.cloneNode(true);
+      track.appendChild(clone);
+    }
+    tpl.remove();
+  })();
+</script>
+<script src="assets/js/main.js" defer></script>
+
+</body>
+</html>
