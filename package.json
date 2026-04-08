@@ -1,16 +1,24 @@
 {
-  "name": "dreamplay-shopify-concept",
+  "name": "dreamplay-shop",
   "version": "1.0.0",
-  "description": "DreamPlay Pianos — Concept theme emulation & asset pipeline",
   "private": true,
   "scripts": {
-    "dev": "npx serve . -l 4000",
-    "watch": "node scripts/organize-assets.js",
-    "seed": "node scripts/organize-assets.js --seed",
-    "repomix": "npx repomix --config repomix.config.json"
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "start": "next start -p 4000",
+    "seed": "node --experimental-sqlite scripts/seed.mjs",
+    "lint": "next lint"
   },
-  "keywords": ["dreamplay", "pianos", "shopify", "concept-theme"],
-  "engines": {
-    "node": ">=18.0.0"
+  "dependencies": {
+    "next": "15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sql.js": "1.14.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

@@ -1,49 +1,35 @@
-# ── OS ─────────────────────────────────────────────
+# ── OS ──────────────────────────────
 .DS_Store
 Thumbs.db
-*.DS_Store
-desktop.ini
 
-# ── Source / binary files (too large for git) ──────
-*.psd
-*.psb
-*.pdf
-*.ai
-*.indd
-*.sketch
-*.fig
-*.xd
-
-# ── Node ───────────────────────────────────────────
-node_modules/
-npm-debug.log*
-pnpm-debug.log*
-yarn-error.log*
-.pnpm-store/
-
-# ── Repomix output (keep config) ───────────────────
-repomix-output*.xml
-repomix-output*.txt
-repomix-output*.md
-repomix-output/
-
-# ── Build / cache ──────────────────────────────────
+# ── Next.js ────────────────────────
+.next/
+out/
 dist/
 .cache/
-.parcel-cache/
-*.tsbuildinfo
 
-# ── Environment ────────────────────────────────────
+# ── Node ───────────────────────────
+node_modules/
+
+# ── Environment ────────────────────
 .env
 .env.*
 !.env.example
 
-# ── Editor ─────────────────────────────────────────
+# ── Repomix output (keep config) ───
+repomix-output*.xml
+repomix-output*.txt
+repomix-output*.md
+
+# ── Source / large binary files ────
+*.psd
+*.psb
+*.pdf
+*.ai
+
+# ── Editor ─────────────────────────
 .vscode/settings.json
 .idea/
-*.swp
-*.swo
 
-# ── Large asset source files ───────────────────────
-assets/images/**/*.psd
-assets/images/**/*.psb
+# ── DB (generated, not committed) ──
+dreamplay.db
