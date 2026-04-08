@@ -660,3 +660,87 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .category-tile { min-width: 160px; }
   .category-tile:first-child { min-width: 180px; }
 }
+
+/* ── Shopify-style PDP ──────────────────────────────── */
+/* Full-width layout: photo mosaic (65%) | sticky info panel (35%) */
+.pdp-shopify-outer {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  min-height: 100vh;
+  align-items: start;
+}
+
+/* Left: scrollable photo gallery */
+.pdp-gallery {
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+/* Masonry-style photo grid matching Shopify screenshot:
+   - First image: tall, spans left column, full height
+   - Remaining images: 2-across grid on the right portion */
+.pdp-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-auto-rows: 340px;
+  gap: 3px;
+}
+
+.pdp-gallery-item {
+  overflow: hidden;
+  cursor: zoom-in;
+  position: relative;
+  background: var(--bg-2);
+}
+
+.pdp-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+.pdp-gallery-item:hover img { transform: scale(1.02); }
+
+/* Featured first image: spans 2 rows, left column */
+.pdp-gallery-item.featured {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  cursor: pointer;
+}
+
+/* Drop zone hint overlay */
+.pdp-gallery-drop-hint {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.05);
+  border: 2px dashed rgba(0,0,0,0.25);
+  font-size: 13px; font-weight: 600; color: var(--text);
+  opacity: 0; transition: opacity 0.2s; pointer-events: none;
+}
+.pdp-gallery-item.drag-over .pdp-gallery-drop-hint,
+.pdp-gallery-item.featured:hover .pdp-gallery-drop-hint { opacity: 1; }
+
+/* Right: sticky info panel */
+.pdp-info-panel {
+  position: sticky;
+  top: 60px;
+  padding: 32px 32px 48px;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.pdp-info-panel::-webkit-scrollbar { display: none; }
+.pdp-info-panel a.btn { text-decoration: none; }
+
+/* Mobile: stack vertically */
+@media (max-width: 960px) {
+  .pdp-shopify-outer { grid-template-columns: 1fr; }
+  .pdp-gallery { border-right: none; }
+  .pdp-gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 260px; }
+  .pdp-gallery-item.featured { grid-column: 1; grid-row: 1 / 3; }
+  .pdp-info-panel { position: static; max-height: none; padding: 24px 20px; }
+}
+@media (max-width: 600px) {
+  .pdp-gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 320px; }
+  .pdp-gallery-item.featured { grid-row: 1 / 2; }
+}

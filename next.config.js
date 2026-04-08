@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {},
   images: {
     unoptimized: true,
+  },
+  // Disable filesystem webpack cache in dev to avoid race conditions with rm -rf .next
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.cache = false;
+    }
+    return config;
   },
 }
 
