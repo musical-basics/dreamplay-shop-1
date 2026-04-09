@@ -1,0 +1,2 @@
+[     982ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://themes.shopify.com'). @ https://cdn.shopify.com/shopifycloud/dux/dux-portal-6.0.1.min.js:0
+[     983ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://themes.shopify.com'). @ https://cdn.shopify.com/shopifycloud/dux/dux-portal-6.0.1.min.js:0

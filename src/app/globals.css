@@ -1065,3 +1065,188 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .pdp-gallery-item.featured { grid-row: auto; }
   .pdp-gallery-right { grid-template-columns: 1fr 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   CONCEPT THEME — Full-width Hero (Section 1)
+   ══════════════════════════════════════════════════════════════ */
+.concept-hero {
+  position: relative;
+  width: 100%;
+  height: 56vw;
+  max-height: 660px;
+  min-height: 380px;
+  overflow: hidden;
+  background: #111;
+}
+.concept-hero-img { position: absolute; inset: 0; }
+.concept-hero-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 20%;
+  animation: heroFadeIn 0.5s ease;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.concept-hero-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
+/* Gradient — left darker for text, right open */
+.concept-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.08) 100%);
+  pointer-events: none;
+}
+/* Social icons — left edge */
+.concept-social {
+  position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 14px; z-index: 10;
+}
+.concept-social a {
+  width: 32px; height: 32px; background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.85); transition: background 0.15s;
+}
+.concept-social a:hover { background: rgba(255,255,255,0.35); }
+/* Content — bottom-left */
+.concept-hero-content {
+  position: absolute; bottom: 60px; left: 60px; right: 60px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+  pointer-events: none;
+}
+.concept-hero-headline {
+  font-family: var(--font-head); font-size: clamp(28px, 5vw, 72px);
+  font-weight: 900; line-height: 1.0; letter-spacing: -2px;
+  text-transform: uppercase; color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4); max-width: 60%;
+}
+.concept-hero-cta {
+  pointer-events: all;
+  display: inline-flex; align-items: center;
+  background: #fff; color: #111; padding: 11px 24px;
+  border-radius: 100px; font-size: 14px; font-weight: 600;
+  letter-spacing: 0.01em; transition: background 0.15s;
+  position: absolute; bottom: 0; right: 0;
+}
+.concept-hero-cta:hover { background: #f0f0f0; }
+/* Controls */
+.concept-hero-controls {
+  position: absolute; bottom: 20px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  pointer-events: none;
+}
+.concept-hero-arrow {
+  pointer-events: all; width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.15s;
+}
+.concept-hero-arrow:hover { background: rgba(255,255,255,0.35); }
+.concept-hero-dots { display: flex; gap: 6px; }
+.concept-hero-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); border: none; padding: 0;
+  cursor: pointer; pointer-events: all; transition: all 0.2s;
+}
+.concept-hero-dot.active { width: 22px; border-radius: 3px; background: #fff; }
+@media (max-width: 768px) {
+  .concept-hero { height: 72vw; max-height: 480px; }
+  .concept-hero-headline { font-size: clamp(22px, 7vw, 40px); max-width: 85%; }
+  .concept-hero-content { bottom: 44px; left: 24px; right: 24px; }
+  .concept-hero-cta { position: relative; bottom: auto; right: auto; }
+  .concept-social { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CONCEPT THEME — Brand Statement (Section 2)
+   ══════════════════════════════════════════════════════════════ */
+.concept-brand {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  padding: 72px 60px; border-bottom: 1px solid var(--border);
+  max-width: 1440px; margin: 0 auto;
+}
+.concept-brand-heading {
+  font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 48px);
+  font-weight: 800; line-height: 1.12; letter-spacing: -1.5px;
+  color: var(--text); margin-bottom: 28px;
+}
+.concept-brand-heading em { font-style: italic; font-weight: 700; }
+.concept-brand-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1.5px solid var(--text); border-radius: 100px;
+  padding: 10px 22px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em; color: var(--text); transition: background 0.15s, color 0.15s;
+}
+.concept-brand-btn:hover { background: var(--text); color: #fff; }
+.concept-brand-right {
+  display: flex; flex-direction: column; gap: 16px; padding-top: 6px;
+  color: var(--text-muted); font-size: 15px; line-height: 1.75;
+}
+.concept-brand-right p strong { color: var(--text); font-weight: 700; }
+@media (max-width: 900px) {
+  .concept-brand { grid-template-columns: 1fr; gap: 28px; padding: 48px 24px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CONCEPT THEME — Category Tiles (Section 3) — 4-col grid
+   ══════════════════════════════════════════════════════════════ */
+.concept-tiles { border-bottom: 1px solid var(--border); }
+.concept-tiles-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.concept-tile {
+  display: block; text-decoration: none; color: inherit;
+  border-right: 1px solid var(--border); overflow: hidden;
+  cursor: pointer; transition: background 0.15s; position: relative;
+}
+.concept-tile:last-child { border-right: none; }
+.concept-tile:hover { background: var(--bg-2); }
+.concept-tile-img {
+  width: 100%; aspect-ratio: 1; overflow: hidden; position: relative;
+  background: var(--bg-2);
+}
+.concept-tile-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  transition: transform 0.4s ease;
+}
+.concept-tile:hover .concept-tile-img img { transform: scale(1.04); }
+.concept-tile-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center;
+  justify-content: center; font-size: 36px; background: var(--bg-3);
+}
+/* All products tile */
+.concept-tile-all-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+.concept-tile-all-text {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 20px; color: #fff;
+}
+.concept-tile-all-label { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; }
+.concept-tile-all-label sup { font-size: 9px; font-weight: 500; vertical-align: super; margin-left: 2px; opacity: 0.8; }
+.concept-tile-all-sub { font-size: 12px; opacity: 0.75; margin-top: 3px; }
+.concept-tile-all-arrow {
+  margin-top: 10px; width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: background 0.15s;
+}
+.concept-tile:hover .concept-tile-all-arrow { background: rgba(255,255,255,0.4); }
+/* Regular tile text */
+.concept-tile-info { padding: 14px 18px 18px; }
+.concept-tile-name {
+  font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.concept-tile-name sup { font-size: 9px; font-weight: 500; vertical-align: super; margin-left: 1px; opacity: 0.6; }
+.concept-tile-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.concept-tile-arrow-inline { font-size: 14px; color: var(--text-muted); transition: transform 0.15s; }
+.concept-tile:hover .concept-tile-arrow-inline { transform: translateX(3px); }
+@media (max-width: 900px) {
+  .concept-tiles-grid { grid-template-columns: repeat(2, 1fr); }
+  .concept-tile { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 500px) {
+  .concept-tiles-grid { grid-template-columns: 1fr 1fr; }
+}

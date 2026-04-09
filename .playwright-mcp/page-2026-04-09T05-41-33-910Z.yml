@@ -1,0 +1,626 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation:
+      - generic:
+        - link "Shopify Theme Store" [ref=e4] [cursor=pointer]:
+          - /url: /
+          - img [ref=e5]:
+            - img [ref=e6]
+          - generic [ref=e8]: Shopify Theme Store
+        - generic [ref=e9]:
+          - button "Browse themes" [ref=e12] [cursor=pointer]:
+            - text: Browse themes
+            - img [ref=e13]:
+              - img [ref=e14]
+          - generic [ref=e16]:
+            - button "Search" [ref=e17] [cursor=pointer]:
+              - img [ref=e18]:
+                - img [ref=e19]
+            - link "Log in" [ref=e21] [cursor=pointer]:
+              - /url: /login
+            - link "Sign up" [ref=e22] [cursor=pointer]:
+              - /url: https://admin.shopify.com/signup?_s=f8c7855f-e04a-42fb-8eec-68ac8a68ce96&_y=a92770a7-6daa-4c09-94aa-41b975993b1a&account_signup=true&locale=en&signup_types%5B%5D=online_store
+  - main [ref=e23]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic:
+          - button "Close demo":
+            - img:
+              - img
+        - generic [ref=e30]:
+          - button "Desktop" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]:
+              - img [ref=e33]
+          - button "Mobile" [ref=e35] [cursor=pointer]:
+            - img [ref=e36]:
+              - img [ref=e37]
+        - generic:
+          - link "Try theme":
+            - /url: https://themes.shopify.com/login?ux=signup
+            - generic: Try theme
+      - generic [ref=e41]:
+        - iframe [ref=e42]:
+          
+        - generic [ref=e43] [cursor=pointer]:
+          - generic:
+            - generic:
+              - generic: View demo
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - heading "Concept" [level=1] [ref=e52]
+        - generic [ref=e53]:
+          - list [ref=e54]:
+            - listitem [ref=e55]:
+              - link "Overview" [ref=e56] [cursor=pointer]:
+                - /url: "#overview"
+            - listitem [ref=e57]:
+              - link "Features" [ref=e58] [cursor=pointer]:
+                - /url: "#features"
+            - listitem [ref=e59]:
+              - link "Reviews" [ref=e60] [cursor=pointer]:
+                - /url: "#reviews"
+            - listitem [ref=e61]:
+              - link "Support" [ref=e62] [cursor=pointer]:
+                - /url: "#ReleaseNotes"
+          - generic [ref=e63]:
+            - generic [ref=e64]: $400 USD
+            - generic [ref=e65]: •
+            - generic [ref=e66]:
+              - img [ref=e67]:
+                - img [ref=e68]
+              - text: 99%
+      - generic [ref=e70]:
+        - button "View demo" [ref=e71] [cursor=pointer]
+        - link "Try theme" [ref=e72] [cursor=pointer]:
+          - /url: https://themes.shopify.com/login?ux=signup
+          - generic [ref=e73]: Try theme
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "Concept" [level=1] [ref=e79]
+          - paragraph [ref=e80]: $400 USD
+        - generic [ref=e81]:
+          - paragraph [ref=e82]: The seamless mobile shopping experience for your customers.
+          - paragraph [ref=e83]:
+            - text: by
+            - link "RoarTheme" [ref=e84] [cursor=pointer]:
+              - /url: "#ReleaseNotes"
+      - generic [ref=e85]:
+        - figure "Mobile shopping made easy Carousel swipes and popup closing feature create a seamless mobile shopping experience like a native app for your customers." [ref=e87]:
+          - button "Mobile shopping made easy" [ref=e88] [cursor=pointer]:
+            - img "Mobile shopping made easy" [ref=e89]
+            - img [ref=e91]:
+              - img [ref=e92]
+          - generic [ref=e94]:
+            - strong [ref=e95]: Mobile shopping made easy
+            - paragraph [ref=e96]: Carousel swipes and popup closing feature create a seamless mobile shopping experience like a native app for your customers.
+        - figure "Create your ideal store With highly customizable built-in sections, our theme gives you the power to create a store that perfectly meets your needs." [ref=e98]:
+          - button "Create your ideal store" [ref=e99] [cursor=pointer]:
+            - img "Create your ideal store" [ref=e100]
+            - img [ref=e102]:
+              - img [ref=e103]
+          - generic [ref=e105]:
+            - strong [ref=e106]: Create your ideal store
+            - paragraph [ref=e107]: With highly customizable built-in sections, our theme gives you the power to create a store that perfectly meets your needs.
+        - figure "Let's make waves New era, new look. Elevate your online presence with our revolutionary theme. Experience design & function like never before." [ref=e109]:
+          - button "Let's make waves" [ref=e110] [cursor=pointer]:
+            - img "Let's make waves" [ref=e111]
+            - img [ref=e113]:
+              - img [ref=e114]
+          - generic [ref=e116]:
+            - strong [ref=e117]: Let's make waves
+            - paragraph [ref=e118]: New era, new look. Elevate your online presence with our revolutionary theme. Experience design & function like never before.
+    - separator [ref=e119]:
+      - separator [ref=e120]
+      - generic [ref=e121]: WHAT'S INCLUDED
+      - separator [ref=e122]
+    - generic [ref=e125]:
+      - heading "Features" [level=2] [ref=e126]
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - heading "Cart and checkout" [level=3] [ref=e130]
+          - list [ref=e131]:
+            - listitem [ref=e132]:
+              - generic [ref=e133]: Cart notes
+            - listitem [ref=e134]:
+              - generic [ref=e135]: Gift wrapping
+            - listitem [ref=e136]:
+              - generic [ref=e137]: In-store pickups
+            - listitem [ref=e138]:
+              - generic [ref=e139]: Pre-order
+            - listitem [ref=e140]:
+              - generic [ref=e141]: Quick buy
+            - listitem [ref=e142]:
+              - generic [ref=e143]: Sign in with Shop
+            - listitem [ref=e144]:
+              - generic [ref=e145]: Slide-out cart
+            - listitem [ref=e146]:
+              - generic [ref=e147]: Sticky cart
+        - generic [ref=e148]:
+          - heading "Customer accounts and sign-in" [level=3] [ref=e149]
+          - list [ref=e150]:
+            - listitem [ref=e151]:
+              - generic [ref=e152]: Account menu
+        - generic [ref=e153]:
+          - heading "Marketing and conversion" [level=3] [ref=e154]
+          - list [ref=e155]:
+            - listitem [ref=e156]:
+              - generic [ref=e157]: Trust badges
+            - listitem [ref=e158]:
+              - generic [ref=e159]: Stock counter
+            - listitem [ref=e160]:
+              - generic [ref=e161]: Right-to-left
+            - listitem [ref=e162]:
+              - generic [ref=e163]: Recommended products
+            - listitem [ref=e164]:
+              - generic [ref=e165]: Recently viewed
+            - listitem [ref=e166]:
+              - generic [ref=e167]: Quick view
+            - listitem [ref=e168]:
+              - generic [ref=e169]: Quick order list
+            - listitem [ref=e170]:
+              - generic [ref=e171]: Promo tiles
+            - listitem [ref=e172]:
+              - generic [ref=e173]: Promo popups
+            - listitem [ref=e174]:
+              - generic [ref=e175]: Promo banners
+            - listitem [ref=e176]:
+              - generic [ref=e177]: Product badges
+            - listitem [ref=e178]:
+              - generic [ref=e179]: Press coverage
+            - listitem [ref=e180]:
+              - generic [ref=e181]: In-menu promos
+            - listitem [ref=e182]:
+              - generic [ref=e183]: FAQ page
+            - listitem [ref=e184]:
+              - generic [ref=e185]: EU translations (EN, FR, IT, DE, ES)
+            - listitem [ref=e186]:
+              - generic [ref=e187]: Customizable contact form
+            - listitem [ref=e188]:
+              - generic [ref=e189]: Cross-selling
+            - listitem [ref=e190]:
+              - generic [ref=e191]: Countdown timer
+            - listitem [ref=e192]:
+              - generic [ref=e193]: Blogs
+            - listitem [ref=e194]:
+              - generic [ref=e195]: Back-in-stock alert
+            - listitem [ref=e196]:
+              - generic [ref=e197]: Age verifier
+            - listitem [ref=e198]:
+              - generic [ref=e199]: Quantity pricing
+              - generic [ref=e200]: Shopify Plus
+        - generic [ref=e201]:
+          - heading "Merchandising" [level=3] [ref=e202]
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - generic [ref=e205]: Usage information
+            - listitem [ref=e206]:
+              - generic [ref=e207]: Slideshow
+            - listitem [ref=e208]:
+              - generic [ref=e209]: Size chart
+            - listitem [ref=e210]:
+              - generic [ref=e211]: Shipping/delivery information
+            - listitem [ref=e212]:
+              - generic [ref=e213]: Product videos
+            - listitem [ref=e214]:
+              - generic [ref=e215]: Product tabs
+            - listitem [ref=e216]:
+              - generic [ref=e217]: Product options
+            - listitem [ref=e218]:
+              - generic [ref=e219]: Lookbooks
+            - listitem [ref=e220]:
+              - generic [ref=e221]: Ingredients or nutritional information
+            - listitem [ref=e222]:
+              - generic [ref=e223]: Image zoom
+            - listitem [ref=e224]:
+              - generic [ref=e225]: Image rollover
+            - listitem [ref=e226]:
+              - generic [ref=e227]: Image hotspot
+            - listitem [ref=e228]:
+              - generic [ref=e229]: Image galleries
+            - listitem [ref=e230]:
+              - generic [ref=e231]: High-resolution images
+            - listitem [ref=e232]:
+              - generic [ref=e233]: Color swatches
+            - listitem [ref=e234]:
+              - generic [ref=e235]: Before/after image slider
+            - listitem [ref=e236]:
+              - generic [ref=e237]: Animation
+            - listitem [ref=e238]:
+              - generic [ref=e239]: Combined listing
+              - generic [ref=e240]: Shopify Plus
+        - generic [ref=e241]:
+          - heading "Product discovery" [level=3] [ref=e242]
+          - list [ref=e243]:
+            - listitem [ref=e244]:
+              - generic [ref=e245]: Back-to-top button
+            - listitem [ref=e246]:
+              - generic [ref=e247]: Breadcrumbs
+            - listitem [ref=e248]:
+              - generic [ref=e249]: Collection page navigation
+            - listitem [ref=e250]:
+              - generic [ref=e251]: Enhanced search
+            - listitem [ref=e252]:
+              - generic [ref=e253]: Infinite scroll
+            - listitem [ref=e254]:
+              - generic [ref=e255]: Mega menu
+            - listitem [ref=e256]:
+              - generic [ref=e257]: Product filtering and sorting
+            - listitem [ref=e258]:
+              - generic [ref=e259]: Recently viewed
+            - listitem [ref=e260]:
+              - generic [ref=e261]: Recommended products
+            - listitem [ref=e262]:
+              - generic [ref=e263]: Sticky header
+            - listitem [ref=e264]:
+              - generic [ref=e265]: Swatch filters
+    - separator [ref=e266]:
+      - separator [ref=e267]
+    - generic [ref=e270]:
+      - generic [ref=e271]:
+        - img [ref=e272]:
+          - img [ref=e273]
+        - generic [ref=e278]:
+          - heading "Presets" [level=2] [ref=e279]
+          - paragraph [ref=e280]: Concept comes with 2 ready-made designs for your store
+      - generic [ref=e281]:
+        - generic [ref=e282]:
+          - generic "View Concept" [ref=e283]:
+            - img "Theme screenshot that previews Concept" [ref=e285]
+            - img [ref=e288]:
+              - img [ref=e289]
+          - generic [ref=e291]: Concept
+        - generic [ref=e292]:
+          - link "View Inova" [ref=e293] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes/concept/presets/inova
+            - img "Theme screenshot that previews Inova" [ref=e295]
+          - generic [ref=e296]: Inova
+    - generic [ref=e298]:
+      - generic [ref=e300]:
+        - heading "Stores using this theme" [level=2] [ref=e301]
+        - generic [ref=e302]:
+          - button "Previous" [disabled] [ref=e303]:
+            - img [ref=e304]:
+              - img [ref=e305]
+          - button "Next" [ref=e307] [cursor=pointer]:
+            - img [ref=e308]:
+              - img [ref=e309]
+      - generic [ref=e311]:
+        - link "View" [ref=e313] [cursor=pointer]:
+          - /url: https://www.aetrex.com
+          - img "Storefront screenshot for" [ref=e315]
+          - paragraph
+        - link "View" [ref=e317] [cursor=pointer]:
+          - /url: https://soccermaxx.ca
+          - img "Storefront screenshot for" [ref=e319]
+          - paragraph
+        - link "View" [ref=e321] [cursor=pointer]:
+          - /url: https://www.heybike.com
+          - img "Storefront screenshot for" [ref=e323]
+          - paragraph
+        - link "View" [ref=e325] [cursor=pointer]:
+          - /url: https://sharge.com
+          - img "Storefront screenshot for" [ref=e327]
+          - paragraph
+        - link "View" [ref=e329] [cursor=pointer]:
+          - /url: https://www.minterandrichterdesigns.com
+          - img "Storefront screenshot for" [ref=e331]
+          - paragraph
+    - generic [ref=e333]:
+      - heading "Reviews" [level=2] [ref=e334]
+      - generic [ref=e335]:
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - generic [ref=e338]:
+              - note [ref=e339]: 99% positive
+              - note [ref=e340]: 583 reviews for all presets
+            - generic [ref=e341]:
+              - group "Positive reviews" [ref=e342]:
+                - generic [ref=e343]: Positive reviews
+                - img [ref=e344]:
+                  - img [ref=e345]
+                - progressbar [ref=e347]: 99%
+                - generic [ref=e348]: "577"
+              - group "Neutral reviews" [ref=e349]:
+                - generic [ref=e350]: Neutral reviews
+                - img [ref=e351]:
+                  - img [ref=e352]
+                - progressbar [ref=e354]: 0%
+                - generic [ref=e355]: "1"
+              - group "Negative reviews" [ref=e356]:
+                - generic [ref=e357]: Negative reviews
+                - img [ref=e358]:
+                  - img [ref=e359]
+                - progressbar [ref=e361]: 1%
+                - generic [ref=e362]: "5"
+          - link "All reviews" [ref=e364] [cursor=pointer]:
+            - /url: /themes/concept/presets/concept/reviews
+        - generic [ref=e366]:
+          - article [ref=e367]:
+            - generic [ref=e368]:
+              - img [ref=e369]:
+                - img [ref=e370]
+              - generic [ref=e372]:
+                - heading "Comfy Shoes" [level=3] [ref=e373]
+                - time [ref=e374]: Apr 9, 2026
+            - paragraph [ref=e375]: Scott is always very quick to response. using the theme for over a year and I am heppy with ttheir support.
+          - article [ref=e376]:
+            - generic [ref=e377]:
+              - img [ref=e378]:
+                - img [ref=e379]
+              - generic [ref=e381]:
+                - heading "GQSize" [level=3] [ref=e382]
+                - time [ref=e383]: Apr 8, 2026
+            - paragraph [ref=e384]: This theme is amazing. Modern, looks good on mobile, yet still fast. What I really like is how they embedded small, animated interactions that make simple component looks very polished and fresh. Also, the support is amazing - very accommodating with our request and adjustment.
+          - article [ref=e385]:
+            - generic [ref=e386]:
+              - img [ref=e387]:
+                - img [ref=e388]
+              - generic [ref=e390]:
+                - heading "Sugoi JDM" [level=3] [ref=e391]
+                - time [ref=e392]: Apr 8, 2026
+            - paragraph [ref=e393]: This theme is an excellent choice if you’re looking for a modern, plug-and-play design that’s easy to set up and customize. We’ve worked with multiple Shopify themes since the platform launched over a decade ago, and this is one of the strongest options we’ve used. The level of built-in customization and the fully responsive design make it well worth the investment.
+          - article [ref=e394]:
+            - generic [ref=e395]:
+              - img [ref=e396]:
+                - img [ref=e397]
+              - generic [ref=e399]:
+                - heading "Coastous" [level=3] [ref=e400]
+                - time [ref=e401]: Apr 8, 2026
+            - paragraph [ref=e402]: First-class design and support!
+    - generic [ref=e405]:
+      - generic [ref=e406]:
+        - heading "Designed by RoarTheme" [level=2] [ref=e407]
+        - generic [ref=e408]:
+          - link "Get support" [ref=e409] [cursor=pointer]:
+            - /url: https://haloroar.ticksy.com
+          - link "All themes" [ref=e410] [cursor=pointer]:
+            - /url: /designers/kumi
+      - generic [ref=e411]:
+        - generic [ref=e412]:
+          - generic [ref=e413]:
+            - heading "Version 5.3.2" [level=3] [ref=e414]
+            - generic [ref=e415]: •
+            - generic [ref=e416]: April 06, 2026
+          - paragraph [ref=e418]: This release focuses on layout stability, bug fixes across multiple sections, and improved accessibility and RTL language support.
+          - generic [ref=e419]:
+            - link "View details" [ref=e420] [cursor=pointer]:
+              - /url: https://themes.shopify.com/themes/concept/presets/concept/modal_version_details?open_first=true
+            - link "All versions" [ref=e421] [cursor=pointer]:
+              - /url: https://themes.shopify.com/themes/concept/presets/concept/modal_version_details
+        - generic [ref=e422]:
+          - heading "Theme documentation" [level=3] [ref=e423]
+          - paragraph [ref=e424]:
+            - link "View details" [ref=e425] [cursor=pointer]:
+              - /url: https://roartheme.co/blogs/concept
+              - text: View details
+              - img [ref=e427]:
+                - img [ref=e428]
+        - generic [ref=e431]:
+          - heading "Designer contact details" [level=3] [ref=e432]
+          - paragraph [ref=e433]: District 2, Ho Chi Minh, 700000, VN
+          - paragraph [ref=e434]: support@roartheme.co
+    - generic [ref=e436]:
+      - generic [ref=e438]:
+        - heading "More themes for electronics" [level=2] [ref=e439]
+        - generic [ref=e440]:
+          - link "View all" [ref=e441] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?industry%5B%5D=electronics
+          - button "Previous" [disabled] [ref=e442]:
+            - img [ref=e443]:
+              - img [ref=e444]
+          - button "Next" [ref=e446] [cursor=pointer]:
+            - img [ref=e447]:
+              - img [ref=e448]
+      - generic [ref=e450]:
+        - link "Details about the Prototype theme" [ref=e452] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/shift/presets/prototype
+          - img "Prototype" [ref=e454]
+          - generic [ref=e455]:
+            - paragraph [ref=e456]: Prototype
+            - generic [ref=e457]:
+              - generic [ref=e458]: $380
+              - status [ref=e459]: New
+        - link "Details about the Petit theme" [ref=e461] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/wonder/presets/petit
+          - img "Petit" [ref=e463]
+          - generic [ref=e464]:
+            - paragraph [ref=e465]: Petit
+            - generic [ref=e466]:
+              - generic [ref=e467]: $390
+              - generic "98% positive" [ref=e468]:
+                - img [ref=e469]:
+                  - img [ref=e470]
+                - generic [ref=e472]: 98%
+              - status [ref=e473]: New
+        - link "Details about the Nexvo theme" [ref=e475] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/hyper/presets/nexvo
+          - img "Nexvo" [ref=e477]
+          - generic [ref=e478]:
+            - paragraph [ref=e479]: Nexvo
+            - generic [ref=e480]:
+              - generic [ref=e481]: $400
+              - generic "99% positive" [ref=e482]:
+                - img [ref=e483]:
+                  - img [ref=e484]
+                - generic [ref=e486]: 99%
+        - link "Details about the Ignite theme" [ref=e488] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/ignite/presets/ignite
+          - img "Ignite" [ref=e490]
+          - generic [ref=e491]:
+            - paragraph [ref=e492]: Ignite
+            - generic [ref=e493]:
+              - generic [ref=e494]: $340
+              - generic "99% positive" [ref=e495]:
+                - img [ref=e496]:
+                  - img [ref=e497]
+                - generic [ref=e499]: 99%
+        - link "Details about the Focal theme" [ref=e501] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/focal/presets/focal
+          - img "Focal" [ref=e503]
+          - generic [ref=e504]:
+            - paragraph [ref=e505]: Focal
+            - generic [ref=e506]:
+              - generic [ref=e507]: $320
+              - generic "93% positive" [ref=e508]:
+                - img [ref=e509]:
+                  - img [ref=e510]
+                - generic [ref=e512]: 93%
+        - link "Details about the Enterprise theme" [ref=e514] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/enterprise/presets/enterprise
+          - img "Enterprise" [ref=e516]
+          - generic [ref=e517]:
+            - paragraph [ref=e518]: Enterprise
+            - generic [ref=e519]:
+              - generic [ref=e520]: $400
+              - generic "93% positive" [ref=e521]:
+                - img [ref=e522]:
+                  - img [ref=e523]
+                - generic [ref=e525]: 93%
+        - link "Details about the Xtra theme" [ref=e527] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/xtra/presets/xtra
+          - img "Xtra" [ref=e529]
+          - generic [ref=e530]:
+            - paragraph [ref=e531]: Xtra
+            - generic [ref=e532]:
+              - generic [ref=e533]: $100
+              - generic "99% positive" [ref=e534]:
+                - img [ref=e535]:
+                  - img [ref=e536]
+                - generic [ref=e538]: 99%
+        - link "Details about the Harmony theme" [ref=e540] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/be-yours/presets/harmony
+          - img "Harmony" [ref=e542]
+          - generic [ref=e543]:
+            - paragraph [ref=e544]: Harmony
+            - generic [ref=e545]:
+              - generic [ref=e546]: $350
+              - generic "98% positive" [ref=e547]:
+                - img [ref=e548]:
+                  - img [ref=e549]
+                - generic [ref=e551]: 98%
+        - link "Details about the Atlas theme" [ref=e553] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/atlas/presets/atlas
+          - img "Atlas" [ref=e555]
+          - generic [ref=e556]:
+            - paragraph [ref=e557]: Atlas
+            - generic [ref=e558]:
+              - generic [ref=e559]: $280
+              - status [ref=e560]: New
+        - link "Details about the Portable theme" [ref=e562] [cursor=pointer]:
+          - /url: https://themes.shopify.com/themes/zap/presets/portable
+          - img "Portable" [ref=e564]
+          - generic [ref=e565]:
+            - paragraph [ref=e566]: Portable
+            - generic [ref=e567]:
+              - generic [ref=e568]: $320
+              - status [ref=e569]: New
+    - generic [ref=e572]:
+      - generic [ref=e573]:
+        - generic [ref=e574]: Crafted for commerce
+        - heading "The world’s best online stores use Shopify themes" [level=2] [ref=e575]
+      - generic [ref=e576]:
+        - generic [ref=e577]:
+          - term [ref=e578]: Future proof
+          - definition [ref=e579]: Regularly updated and always works with the newest Shopify features.
+        - generic [ref=e580]:
+          - term [ref=e581]: Play before you pay
+          - definition [ref=e582]: Customize until you love it. Only pay when you publish.
+        - generic [ref=e583]:
+          - term [ref=e584]: Blazing fast checkout
+          - definition [ref=e585]: Speed-tested so your customers check out in record time.
+        - generic [ref=e586]:
+          - term [ref=e587]: Keep it forever
+          - definition [ref=e588]: One-time payment, lifetime license for your store. No expiration.
+  - generic [ref=e590]:
+    - heading "Build fast and sell more with Shopify themes" [level=2] [ref=e591]:
+      - text: Build fast and sell more
+      - text: with Shopify themes
+    - button "Start your free trial" [ref=e592] [cursor=pointer]
+  - contentinfo [ref=e593]:
+    - generic [ref=e594]:
+      - generic [ref=e595]:
+        - generic [ref=e598]:
+          - heading "Top industries" [level=6] [ref=e599]
+          - link "Clothing" [ref=e600] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?industry%5B%5D=clothing
+          - link "Beauty" [ref=e601] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?industry%5B%5D=beauty
+          - link "Jewelry and accessories" [ref=e602] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?industry%5B%5D=jewelry-and-accessories
+          - link "Home" [ref=e603] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?industry%5B%5D=home
+        - generic [ref=e604]:
+          - heading "Categories" [level=6] [ref=e605]
+          - link "All themes" [ref=e606] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes
+          - link "Free themes" [ref=e607] [cursor=pointer]:
+            - /url: https://themes.shopify.com/themes?price=free
+        - generic [ref=e608]:
+          - heading "Support" [level=6] [ref=e609]
+          - link "Shopify Help Center" [ref=e610] [cursor=pointer]:
+            - /url: https://help.shopify.com/en/
+          - link "API Documentation" [ref=e611] [cursor=pointer]:
+            - /url: https://shopify.dev/api
+          - link "Shopify Community" [ref=e612] [cursor=pointer]:
+            - /url: https://community.shopify.com/c/shopify-community-en/ct-p/en
+          - link "Blogs" [ref=e613] [cursor=pointer]:
+            - /url: https://www.shopify.com/blog
+        - generic [ref=e614]:
+          - heading "Shopify" [level=6] [ref=e615]
+          - link "About" [ref=e616] [cursor=pointer]:
+            - /url: https://www.shopify.com/about
+          - link "Partners" [ref=e617] [cursor=pointer]:
+            - /url: https://www.shopify.com/partners
+          - link "Legal" [ref=e618] [cursor=pointer]:
+            - /url: https://www.shopify.com/legal
+          - link "Service status" [ref=e619] [cursor=pointer]:
+            - /url: https://shopifystatus.com
+      - separator [ref=e620]
+      - generic [ref=e621]:
+        - generic [ref=e622]:
+          - link "Terms of Service" [ref=e624] [cursor=pointer]:
+            - /url: https://www.shopify.com/legal/terms
+          - link "Privacy Policy" [ref=e626] [cursor=pointer]:
+            - /url: https://www.shopify.com/legal/privacy
+          - link "Your Privacy Choices California Consumer Privacy Act (CCPA) Opt-Out Icon" [ref=e628] [cursor=pointer]:
+            - /url: https://privacy.shopify.com/en
+            - generic [ref=e629]:
+              - text: Your Privacy Choices
+              - img "California Consumer Privacy Act (CCPA) Opt-Out Icon" [ref=e630]
+          - link "Sitemap" [ref=e632] [cursor=pointer]:
+            - /url: https://themes.shopify.com/sitemap
+        - combobox "Change your language" [ref=e637]:
+          - option "Čeština"
+          - option "Dansk"
+          - option "Deutsch"
+          - option "English" [selected]
+          - option "Español"
+          - option "Français"
+          - option "Hrvatski"
+          - option "Indonesia"
+          - option "Italiano"
+          - option "Lietuvių"
+          - option "Magyar"
+          - option "Melayu"
+          - option "Nederlands"
+          - option "Norsk (bokmål)"
+          - option "Polski"
+          - option "Português (Brasil)"
+          - option "Português (Portugal)"
+          - option "Română"
+          - option "Slovenčina"
+          - option "Slovenščina"
+          - option "Suomi"
+          - option "Svenska"
+          - option "Tiếng Việt"
+          - option "Türkçe"
+          - option "Ελληνικά"
+          - option "Български"
+          - option "Русский"
+          - option "हिन्दी"
+          - option "ภาษาไทย"
+          - option "日本語"
+          - option "简体中文"
+          - option "繁體中文"
+          - option "한국어"

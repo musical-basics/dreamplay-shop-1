@@ -1,0 +1,19 @@
+[     817ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://themes.shopify.com'). @ https://cdn.shopify.com/shopifycloud/dux/dux-portal-6.0.1.min.js:0
+[     818ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://themes.shopify.com'). @ https://cdn.shopify.com/shopifycloud/dux/dux-portal-6.0.1.min.js:0
+[    4906ms] [LOG] Concept theme (5.3.2) by RoarTheme | Learn more at https://roartheme.co @ https://concept-theme-tech.myshopify.com/cdn/shop/t/182/assets/theme.js?v=130048031537068346871775456082:11
+[    5391ms] [ERROR] Framing 'https://concept-theme-tech.myshopify.com/' violates the following Content Security Policy directive: "frame-ancestors 'self'". The request has been blocked.
+ @ :0
+[    5445ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://concept-theme-tech.myshopify.com/cdn/shop/t/182/assets/theme.js?v=130048031537068346871775456082:17
+[    5522ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://concept-theme-tech.myshopify.com/cdn/shop/t/182/assets/theme.js?v=130048031537068346871775456082:17
+[    6024ms] [ERROR] Framing 'https://concept-theme-tech.myshopify.com/' violates the following Content Security Policy directive: "frame-ancestors 'self' concept-theme-tech.myshopify.com concept-theme-tech.account.myshopify.com". The request has been blocked.
+ @ :0
+[    6381ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/storefront/web-components/account/account-dialog-Cf0cjBOv.js:0
+[    7470ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/chunk.colors_BVCBF39r.esm.js:0
+[    7489ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/chunk.index_CzTe2rcP.esm.js:0
+[    7772ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://concept-theme-tech.myshopify.com https://concept-theme-tech.account.myshopify.com https://shopify.com". The request has been blocked.
+ @ :0
+[    7794ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://concept-theme-tech.myshopify.com https://concept-theme-tech.account.myshopify.com https://shopify.com". The request has been blocked.
+ @ :0
+[    7797ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://concept-theme-tech.myshopify.com https://concept-theme-tech.account.myshopify.com https://shopify.com". The request has been blocked.
+ @ :0
+[    8457ms] [VERBOSE] Rendering was performed in a subtree hidden by content-visibility. @ :3102

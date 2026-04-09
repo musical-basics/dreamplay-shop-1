@@ -1,0 +1,21 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Daves' Tech Store" [level=1] [ref=e5]
+      - text: This area has limited access...
+    - generic [ref=e6]:
+      - generic [ref=e7]: "Enter store using password:"
+      - textbox "Enter store using password:" [active] [ref=e8]
+      - button "Enter" [ref=e9] [cursor=pointer]
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - text: Are you the store owner?
+      - link "Log in here" [ref=e12] [cursor=pointer]:
+        - /url: /admin
+      - text: or
+      - link "change your password settings" [ref=e13] [cursor=pointer]:
+        - /url: /admin/online_store/preferences?tutorial=unlock
+    - generic [ref=e14]:
+      - text: This store is powered by
+      - link "Shopify" [ref=e15] [cursor=pointer]:
+        - /url: //www.shopify.com
