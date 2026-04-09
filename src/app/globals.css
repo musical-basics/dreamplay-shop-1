@@ -1382,8 +1382,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .key-compare-wrap {
   position: relative;
   width: 100%;
-  margin: 0;
-  border-radius: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 3/1;
   background: #111;
@@ -1399,7 +1400,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .key-compare-side img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
@@ -1517,6 +1518,62 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (max-width: 768px) {
   .key-compare-wrap { aspect-ratio: 2/1; }
   .key-compare-legend { gap: 24px; padding: 0 24px; }
+}
+
+/* ── Zone Measurement Overlay ────────────────────────────────────────────── */
+.kc-measure {
+  position: absolute;
+  bottom: 18%;
+  height: 52px;
+  z-index: 6;
+  pointer-events: none;
+}
+.kc-measure-line-left,
+.kc-measure-line-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0;
+  border-left: 1.5px dashed;
+  opacity: 0.85;
+}
+.kc-measure-line-left  { left: 0; }
+.kc-measure-line-right { right: 0; left: auto; border-left: none; border-right: 1.5px dashed; }
+.kc-measure-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 8px;
+}
+.kc-measure-arrow {
+  width: 100%;
+  height: 12px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.kc-measure-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.kc-measure-zone {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+}
+.kc-measure-span {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
 }
 
 /* ── Handspan Comparison Section ────────────────────────────────────────── */
