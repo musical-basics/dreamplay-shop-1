@@ -4,7 +4,15 @@ import Link from 'next/link';
 import type { Product } from '@/lib/db';
 
 // ── Keyboard Comparison Slider ──────────────────────────────────────────────
-function KeyboardComparison() {
+type SliderMode = 'standard-vs-60' | '60-vs-55';
+
+function CompareSlider({
+  leftSrc, leftLabel,
+  rightSrc, rightLabel,
+}: {
+  leftSrc: string; leftLabel: string;
+  rightSrc: string; rightLabel: string;
+}) {
   const [pos, setPos] = useState(50);
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,7 +20,7 @@ function KeyboardComparison() {
   const getPos = (clientX: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return 50;
-    return Math.min(98, Math.max(2, ((clientX - rect.left) / rect.width) * 100));
+    return Math.min(97, Math.max(3, ((clientX - rect.left) / rect.width) * 100));
   };
 
   useEffect(() => {
@@ -33,83 +41,127 @@ function KeyboardComparison() {
   }, [dragging]);
 
   return (
+    <div
+      className="key-compare-wrap"
+      ref={containerRef}
+      style={{ userSelect: 'none' }}
+    >
+      {/* LEFT side */}
+      <div className="key-compare-side key-compare-left">
+        <img src={leftSrc} alt={leftLabel} />
+        <div className="key-compare-badge kc-badge-left">{leftLabel}</div>
+      </div>
+
+      {/* RIGHT side — revealed by drag */}
+      <div
+        className="key-compare-side key-compare-right"
+        style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+      >
+        <img src={rightSrc} alt={rightLabel} />
+        <div className="key-compare-badge kc-badge-right">{rightLabel}</div>
+      </div>
+
+      {/* Drag divider */}
+      <div className="key-compare-divider" style={{ left: `${pos}%` }}>
+        <div
+          className="key-compare-handle"
+          onMouseDown={e => { e.preventDefault(); setDragging(true); }}
+          onTouchStart={() => setDragging(true)}
+          aria-label="Drag to compare keyboards"
+          role="slider"
+          aria-valuenow={Math.round(pos)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M8 9l-5 3 5 3V9zm8 0v6l5-3-5-3z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function KeyboardComparison() {
+  const [mode, setMode] = useState<SliderMode>('standard-vs-60');
+
+  const configs: Record<SliderMode, {
+    tab: string; desc: string;
+    leftSrc: string; leftLabel: string;
+    rightSrc: string; rightLabel: string;
+    legend: { color: string; title: string; body: string }[];
+  }> = {
+    'standard-vs-60': {
+      tab: 'Standard vs DS 6.0',
+      desc: 'Drag to compare — DS 6.5 Standard (Zone C) vs DS 6.0 (Zone B). See how 3.5″ less width unlocks a full octave.',
+      leftSrc: '/assets/comparison/DS 6.5.png',
+      leftLabel: 'DS 6.5 · Standard · Zone C',
+      rightSrc: '/assets/comparison/DS 6.0.png',
+      rightLabel: 'DS 6.0 · Zone B',
+      legend: [
+        { color: '#63b3ed', title: 'Zone C — Standard Spacing (DS 6.5)', body: 'Traditional 52 mm key width. Comfortable for hands 6.5″+ but challenging for smaller spans.' },
+        { color: '#9a67f8', title: 'Zone B — DS 6.0 (6–7.5″ spans)', body: 'DreamPlay 48 mm keys. Play full octaves and 10th chords with significantly less stretch.' },
+      ],
+    },
+    '60-vs-55': {
+      tab: 'DS 6.0 vs DS 5.5',
+      desc: 'Drag to compare — DS 6.0 (Zone B) vs DS 5.5 (Zone A). Our most compact option for players with 5–6″ handspans.',
+      leftSrc: '/assets/comparison/DS 6.0.png',
+      leftLabel: 'DS 6.0 · Zone B',
+      rightSrc: '/assets/comparison/DS 5.5.png',
+      rightLabel: 'DS 5.5 · Zone A',
+      legend: [
+        { color: '#9a67f8', title: 'Zone B — DS 6.0 (6–7.5″ spans)', body: 'Great middle-ground: narrower than standard, still familiar feel for most pianists.' },
+        { color: '#f6ad55', title: 'Zone A — DS 5.5 (5–6″ spans)', body: 'Maximum reach advantage. Ideal for youth players, small hands, and high-stretch passages.' },
+      ],
+    },
+  };
+
+  const cfg = configs[mode];
+
+  return (
     <section className="key-compare-section">
       <div className="container">
         <div className="key-compare-header">
           <div className="key-compare-eyebrow">Size Comparison</div>
           <h2 className="key-compare-title">Built for <em>Real Hands.</em></h2>
-          <p className="key-compare-sub">
-            Drag to compare — DS 6.0 vs standard key spacing. See exactly which zone fits your handspan.
-          </p>
+
+          {/* Toggle tabs */}
+          <div className="key-compare-tabs">
+            {(Object.keys(configs) as SliderMode[]).map(k => (
+              <button
+                key={k}
+                className={`key-compare-tab${mode === k ? ' active' : ''}`}
+                onClick={() => setMode(k)}
+              >
+                {configs[k].tab}
+              </button>
+            ))}
+          </div>
+
+          <p className="key-compare-sub">{cfg.desc}</p>
         </div>
 
-        <div
-          className="key-compare-wrap"
-          ref={containerRef}
-          style={{ userSelect: 'none' }}
-        >
-          {/* LEFT side: Standard DS 6.5 (Yamaha reference — 48" / 122 cm) */}
-          <div className="key-compare-side key-compare-left">
-            <img src="/assets/comparison/ds-6-5-standard.png" alt="Standard DS 6.5 keyboard" />
-            <div className="key-compare-badge kc-badge-left">Standard DS 6.5 · 48&rdquo;&thinsp;/&thinsp;122cm</div>
-          </div>
+        {/* Slider — keyed so it resets position on mode change */}
+        <CompareSlider
+          key={mode}
+          leftSrc={cfg.leftSrc}
+          leftLabel={cfg.leftLabel}
+          rightSrc={cfg.rightSrc}
+          rightLabel={cfg.rightLabel}
+        />
 
-          {/* RIGHT side: DreamPlay DS 6.0 — revealed by drag */}
-          <div
-            className="key-compare-side key-compare-right"
-            style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
-          >
-            <img src="/assets/comparison/ds-6-0-front.png" alt="DreamPlay DS 6.0 keyboard" />
-            <div className="key-compare-badge kc-badge-right">DreamPlay DS 6.0 · 44.5&rdquo;&thinsp;/&thinsp;113cm</div>
-          </div>
-
-          {/* Zone A overlay — bass range, left portion */}
-          <div className="key-zone zone-a">
-            <span className="key-zone-label">Zone A</span>
-            <span className="key-zone-sub">5&ndash;6&rdquo; span</span>
-          </div>
-
-          {/* Zone B overlay — treble range, right portion */}
-          <div className="key-zone zone-b">
-            <span className="key-zone-label">Zone B</span>
-            <span className="key-zone-sub">6&ndash;7.5&rdquo; span</span>
-          </div>
-
-          {/* Drag divider line + handle */}
-          <div className="key-compare-divider" style={{ left: `${pos}%` }}>
-            <div
-              className="key-compare-handle"
-              onMouseDown={e => { e.preventDefault(); setDragging(true); }}
-              onTouchStart={() => setDragging(true)}
-              aria-label="Drag to compare keyboards"
-              role="slider"
-              aria-valuenow={Math.round(pos)}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 9l-5 3 5 3V9zm8 0v6l5-3-5-3z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* Zone legend */}
+        {/* Legend */}
         <div className="key-compare-legend">
-          <div className="key-legend-item">
-            <span className="key-legend-dot zone-a-dot" />
-            <div>
-              <strong>Zone A &mdash; Small/Medium Hands (5&ndash;6&rdquo;)</strong>
-              <p>Reach a full octave on DS 6.0. Requires a stretch on standard spacing.</p>
+          {cfg.legend.map(l => (
+            <div key={l.title} className="key-legend-item">
+              <span className="key-legend-dot" style={{ background: l.color }} />
+              <div>
+                <strong>{l.title}</strong>
+                <p>{l.body}</p>
+              </div>
             </div>
-          </div>
-          <div className="key-legend-item">
-            <span className="key-legend-dot zone-b-dot" />
-            <div>
-              <strong>Zone B &mdash; Medium/Large Hands (6&ndash;7.5&rdquo;)</strong>
-              <p>Play full 10th chords effortlessly. DreamPlay&rsquo;s narrower keys shift reach in your favor.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

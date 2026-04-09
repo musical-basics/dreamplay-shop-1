@@ -1341,6 +1341,37 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 14px;
 }
 .key-compare-title em { font-style: italic; }
+.key-compare-tabs {
+  display: inline-flex;
+  gap: 8px;
+  margin: 20px auto 16px;
+  background: var(--bg-3, #f0f0f0);
+  border-radius: 100px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+.key-compare-tab {
+  padding: 9px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.key-compare-tab.active {
+  background: var(--text);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.key-compare-tab:not(.active):hover {
+  background: var(--bg-2, #e8e8e8);
+  color: var(--text);
+}
 .key-compare-sub {
   font-size: 15px;
   color: var(--text-muted);
