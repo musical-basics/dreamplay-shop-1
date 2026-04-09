@@ -33,3 +33,11 @@ repomix-output*.md
 
 # ── DB (generated, not committed) ──
 dreamplay.db
+
+# ── Playwright MCP (temp snapshots) ──
+.playwright-mcp/
+concept_theme_homepage.png
+ShopPay.webp
+buy-with-shop-checkout-button.webp
+screenshots-360.png
+docs/reference/
