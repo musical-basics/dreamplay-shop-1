@@ -141,17 +141,19 @@ function KeyboardComparison() {
 
           <p className="key-compare-sub">{cfg.desc}</p>
         </div>
+      </div>
 
-        {/* Slider — keyed so it resets position on mode change */}
-        <CompareSlider
-          key={mode}
-          leftSrc={cfg.leftSrc}
-          leftLabel={cfg.leftLabel}
-          rightSrc={cfg.rightSrc}
-          rightLabel={cfg.rightLabel}
-        />
+      {/* Slider — full width, outside container */}
+      <CompareSlider
+        key={mode}
+        leftSrc={cfg.leftSrc}
+        leftLabel={cfg.leftLabel}
+        rightSrc={cfg.rightSrc}
+        rightLabel={cfg.rightLabel}
+      />
 
-        {/* Legend */}
+      {/* Legend — back inside container */}
+      <div className="container">
         <div className="key-compare-legend">
           {cfg.legend.map(l => (
             <div key={l.title} className="key-legend-item">
