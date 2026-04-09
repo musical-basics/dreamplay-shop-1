@@ -66,16 +66,13 @@ export default function HomePage() {
   const slide    = heroSlides[slideIdx] ?? null;
   const slideImg = slide?.images.find(i => i.is_primary) ?? slide?.images[0];
 
-  // Category tiles — 4-col grid matching Concept theme
+  // Category tiles — exactly 4 like Concept theme reference
   const categoryTiles = [
-    { key: 'all',     label: 'All products',  sub: 'Check out all our products', count: products.length,  href: '/collections/merch',  product: products[0],  isAll: true },
-    { key: 'merch',   label: 'Merch',         sub: 'Rep the DreamPlay brand',    count: merch.length,     href: '/collections/merch',  product: merch[0],     isAll: false },
-    { key: 'ds60',    label: 'DS 6.0 Series', sub: 'Our flagship keyboard',      count: pianos.filter(p => p.subcategory?.includes('6.0')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('6.0')), isAll: false },
-    { key: 'ds55',    label: 'DS 5.5',        sub: 'Compact powerhouse',         count: pianos.filter(p => p.subcategory?.includes('5.5')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('5.5')), isAll: false },
-    { key: 'go',      label: 'DreamPlay Go',  sub: 'Play anywhere',              count: pianos.filter(p => p.subcategory?.includes('Go')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('Go')), isAll: false },
-    { key: 'gold',    label: 'Gold Edition',  sub: 'Limited Gold Series',        count: pianos.filter(p => p.name?.toLowerCase().includes('gold')).length, href: '/collections/pianos', product: pianos.find(p => p.name?.toLowerCase().includes('gold')), isAll: false },
-    { key: 'limited', label: 'Limited',       sub: 'Exclusive drops',            count: products.filter(p => p.badge === 'Coming Soon').length, href: '/collections/pianos', product: pianos.find(p => p.badge === 'Coming Soon'), isAll: false },
-  ].filter(t => t.count > 0 || t.isAll);
+    { key: 'all',   label: 'All products',  sub: 'Check out all our products', count: products.length,  href: '/collections/merch',  product: products[0],                                       isAll: true },
+    { key: 'merch', label: 'Merch',         sub: 'Rep the DreamPlay brand',    count: merch.length,     href: '/collections/merch',  product: merch[0],                                          isAll: false },
+    { key: 'ds60',  label: 'DS 6.0 Series', sub: 'Our flagship keyboard',      count: pianos.filter(p => p.subcategory?.includes('6.0')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('6.0')), isAll: false },
+    { key: 'ds55',  label: 'DS 5.5',        sub: 'Compact powerhouse',         count: pianos.filter(p => p.subcategory?.includes('5.5')).length, href: '/collections/pianos', product: pianos.find(p => p.subcategory?.includes('5.5')), isAll: false },
+  ];
 
   return (
     <>
