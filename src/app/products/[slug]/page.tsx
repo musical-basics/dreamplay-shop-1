@@ -421,23 +421,18 @@ export default function ProductPage() {
                 Shopify's own checkout page shows their saved card (e.g. Visa 0258).
                 We cannot embed the interactive SDK button without a Storefront token,
                 so we link to Shopify's checkout directly — same visual, same result. */}
-            {/* Shop Pay button — full-width pill, exact match to reference screenshot.
-                Rendered as a data-URI SVG so it never relies on external CDNs or broken path data. */}
+            {/* Shop Pay button — exact PNG the user provided, served from public/ */}
             <a
-              href={`https://dreamplay-pianos.myshopify.com/checkout`}
-              target="_blank" rel="noopener"
+              href="https://dreamplay-pianos.myshopify.com/checkout"
+              target="_blank"
+              rel="noopener"
               style={{ display: 'block', width: '100%', textDecoration: 'none' }}
               aria-label="Buy with Shop Pay"
             >
               <img
-                src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 52" width="400" height="52">
-  <rect width="400" height="52" rx="26" fill="#5a31f4"/>
-  <text x="200" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="500" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.1">
-    <tspan>Buy with </tspan><tspan font-weight="700" letter-spacing="-0.3">shop</tspan>
-  </text>
-</svg>`)}`}
+                src="/shop-pay-btn.png"
                 alt="Buy with Shop Pay"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }}
               />
             </a>
 
