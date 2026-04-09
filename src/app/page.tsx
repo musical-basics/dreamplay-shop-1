@@ -9,11 +9,9 @@ type SliderMode = 'standard-vs-60' | '60-vs-55';
 function CompareSlider({
   leftSrc, leftLabel,
   rightSrc, rightLabel,
-  measurement,
 }: {
   leftSrc: string; leftLabel: string;
   rightSrc: string; rightLabel: string;
-  measurement?: { zone: string; span: string; color: string; leftPct: number; rightPct: number };
 }) {
   const [pos, setPos] = useState(50);
   const [dragging, setDragging] = useState(false);
@@ -63,45 +61,6 @@ function CompareSlider({
         <div className="key-compare-badge kc-badge-right">{rightLabel}</div>
       </div>
 
-      {/* Zone measurement overlay */}
-      {measurement && (
-        <div
-          className="kc-measure"
-          style={{
-            left: `${measurement.leftPct}%`,
-            width: `${measurement.rightPct - measurement.leftPct}%`,
-          }}
-        >
-          {/* Dashed vertical lines at edges */}
-          <div className="kc-measure-line kc-measure-line-left" style={{ borderColor: measurement.color }} />
-          <div className="kc-measure-line kc-measure-line-right" style={{ borderColor: measurement.color }} />
-          {/* Arrow + label */}
-          <div className="kc-measure-body">
-            <svg className="kc-measure-arrow" viewBox="0 0 200 12" preserveAspectRatio="none">
-              <defs>
-                <marker id={`ah-${measurement.zone}`} markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                  <path d="M0,0 L6,3 L0,6 Z" fill={measurement.color} />
-                </marker>
-                <marker id={`at-${measurement.zone}`} markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse">
-                  <path d="M0,0 L6,3 L0,6 Z" fill={measurement.color} />
-                </marker>
-              </defs>
-              <line
-                x1="4" y1="6" x2="196" y2="6"
-                stroke={measurement.color}
-                strokeWidth="1.5"
-                markerEnd={`url(#ah-${measurement.zone})`}
-                markerStart={`url(#at-${measurement.zone})`}
-              />
-            </svg>
-            <div className="kc-measure-text">
-              <span className="kc-measure-zone" style={{ color: measurement.color }}>{measurement.zone}</span>
-              <span className="kc-measure-span">{measurement.span}</span>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Drag divider */}
       <div className="key-compare-divider" style={{ left: `${pos}%` }}>
         <div
@@ -130,7 +89,6 @@ function KeyboardComparison() {
     tab: string; desc: string;
     leftSrc: string; leftLabel: string;
     rightSrc: string; rightLabel: string;
-    measurement: { zone: string; span: string; color: string; leftPct: number; rightPct: number };
     legend: { color: string; title: string; body: string }[];
   }> = {
     'standard-vs-60': {
@@ -140,7 +98,6 @@ function KeyboardComparison() {
       leftLabel: 'DS 6.5 · Standard · Zone C',
       rightSrc: '/assets/comparison/DS 6.0.png',
       rightLabel: 'DS 6.0 · Zone B',
-      measurement: { zone: 'Zone B', span: '6.0 – 7.5″ span', color: '#9a67f8', leftPct: 28, rightPct: 72 },
       legend: [
         { color: '#e53e3e', title: 'Zone C — Standard Spacing (DS 6.5)', body: 'Traditional 52 mm key width. Requires a 7″+ handspan to reach a comfortable octave.' },
         { color: '#9a67f8', title: 'Zone B — DS 6.0 (6–7.5″ spans)', body: 'DreamPlay 48 mm keys. Play full octaves and 10th chords with significantly less stretch.' },
@@ -153,7 +110,6 @@ function KeyboardComparison() {
       leftLabel: 'DS 6.0 · Zone B',
       rightSrc: '/assets/comparison/DS 5.5.png',
       rightLabel: 'DS 5.5 · Zone A',
-      measurement: { zone: 'Zone A', span: '5.0 – 6.5″ span', color: '#4fd1c5', leftPct: 30, rightPct: 70 },
       legend: [
         { color: '#9a67f8', title: 'Zone B — DS 6.0 (6–7.5″ spans)', body: 'Great middle-ground: narrower than standard, still familiar feel for most pianists.' },
         { color: '#4fd1c5', title: 'Zone A — DS 5.5 (5–6.5″ spans)', body: 'Maximum reach advantage. Ideal for youth players, small hands, and high-stretch passages.' },
@@ -192,7 +148,6 @@ function KeyboardComparison() {
         leftLabel={cfg.leftLabel}
         rightSrc={cfg.rightSrc}
         rightLabel={cfg.rightLabel}
-        measurement={cfg.measurement}
       />
 
       {/* Legend */}
