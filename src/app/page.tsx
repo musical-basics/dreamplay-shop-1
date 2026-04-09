@@ -3,6 +3,119 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import type { Product } from '@/lib/db';
 
+// ── Keyboard Comparison Slider ──────────────────────────────────────────────
+function KeyboardComparison() {
+  const [pos, setPos] = useState(50);
+  const [dragging, setDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const getPos = (clientX: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return 50;
+    return Math.min(98, Math.max(2, ((clientX - rect.left) / rect.width) * 100));
+  };
+
+  useEffect(() => {
+    if (!dragging) return;
+    const onMove = (e: MouseEvent) => setPos(getPos(e.clientX));
+    const onTouch = (e: TouchEvent) => setPos(getPos(e.touches[0].clientX));
+    const onUp = () => setDragging(false);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onTouch, { passive: true });
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchmove', onTouch);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, [dragging]);
+
+  return (
+    <section className="key-compare-section">
+      <div className="container">
+        <div className="key-compare-header">
+          <div className="key-compare-eyebrow">Size Comparison</div>
+          <h2 className="key-compare-title">Built for <em>Real Hands.</em></h2>
+          <p className="key-compare-sub">
+            Drag to compare — DS 6.0 vs standard key spacing. See exactly which zone fits your handspan.
+          </p>
+        </div>
+
+        <div
+          className="key-compare-wrap"
+          ref={containerRef}
+          style={{ userSelect: 'none' }}
+        >
+          {/* LEFT side: Standard DS 6.5 (Yamaha reference — 48" / 122 cm) */}
+          <div className="key-compare-side key-compare-left">
+            <img src="/assets/comparison/ds-6-5-standard.png" alt="Standard DS 6.5 keyboard" />
+            <div className="key-compare-badge kc-badge-left">Standard DS 6.5 · 48&rdquo;&thinsp;/&thinsp;122cm</div>
+          </div>
+
+          {/* RIGHT side: DreamPlay DS 6.0 — revealed by drag */}
+          <div
+            className="key-compare-side key-compare-right"
+            style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+          >
+            <img src="/assets/comparison/ds-6-0-front.png" alt="DreamPlay DS 6.0 keyboard" />
+            <div className="key-compare-badge kc-badge-right">DreamPlay DS 6.0 · 44.5&rdquo;&thinsp;/&thinsp;113cm</div>
+          </div>
+
+          {/* Zone A overlay — bass range, left portion */}
+          <div className="key-zone zone-a">
+            <span className="key-zone-label">Zone A</span>
+            <span className="key-zone-sub">5&ndash;6&rdquo; span</span>
+          </div>
+
+          {/* Zone B overlay — treble range, right portion */}
+          <div className="key-zone zone-b">
+            <span className="key-zone-label">Zone B</span>
+            <span className="key-zone-sub">6&ndash;7.5&rdquo; span</span>
+          </div>
+
+          {/* Drag divider line + handle */}
+          <div className="key-compare-divider" style={{ left: `${pos}%` }}>
+            <div
+              className="key-compare-handle"
+              onMouseDown={e => { e.preventDefault(); setDragging(true); }}
+              onTouchStart={() => setDragging(true)}
+              aria-label="Drag to compare keyboards"
+              role="slider"
+              aria-valuenow={Math.round(pos)}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M8 9l-5 3 5 3V9zm8 0v6l5-3-5-3z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Zone legend */}
+        <div className="key-compare-legend">
+          <div className="key-legend-item">
+            <span className="key-legend-dot zone-a-dot" />
+            <div>
+              <strong>Zone A &mdash; Small/Medium Hands (5&ndash;6&rdquo;)</strong>
+              <p>Reach a full octave on DS 6.0. Requires a stretch on standard spacing.</p>
+            </div>
+          </div>
+          <div className="key-legend-item">
+            <span className="key-legend-dot zone-b-dot" />
+            <div>
+              <strong>Zone B &mdash; Medium/Large Hands (6&ndash;7.5&rdquo;)</strong>
+              <p>Play full 10th chords effortlessly. DreamPlay&rsquo;s narrower keys shift reach in your favor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Countdown ─────────────────────────────────────────────────────────────────
 function useCountdown(hours = 72) {
   const [t, setT] = useState({ h: hours, m: 0, s: 0 });
@@ -270,6 +383,31 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 4: Video Hero — full-width autoplay piano video
+          ══════════════════════════════════════════════════════════════ */}
+      <section className="video-hero-section">
+        <video
+          className="video-hero-bg"
+          src="/assets/video/piano-hero.mp4"
+          autoPlay muted loop playsInline
+          aria-hidden="true"
+        />
+        <div className="video-hero-overlay" aria-hidden="true" />
+        <div className="video-hero-content">
+          <div className="video-hero-eyebrow">Now Playing</div>
+          <h2 className="video-hero-heading">Every note.<br />Perfectly felt.</h2>
+          <Link href="/collections/pianos" className="video-hero-cta">
+            Shop Keyboards →
+          </Link>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SECTION 5: Keyboard size comparison drag slider
+          ══════════════════════════════════════════════════════════════ */}
+      <KeyboardComparison />
 
       {/* Scrolling text marquee */}
       <div className="text-marquee" aria-hidden="true">

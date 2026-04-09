@@ -7,16 +7,17 @@ import type { Product } from '@/lib/db';
 // ── Real Shopify product copy — scraped word-for-word from dreamplay-pianos.myshopify.com ──
 const PRODUCT_SPECS: Record<string, {
   headline?: string;
-  description?: string;       // plain-text opening line shown above bullets
-  whyYoullLoveIt?: string[];  // "Why You'll Love It" bullets (Official Hoodie)
-  details?: string[];         // "Details" bullets
-  features?: string[];        // generic bullet list
+  description?: string;
+  whyYoullLoveIt?: string[];
+  details?: string[];
+  features?: string[];
+  highlights?: { icon: string; label: string }[];
   material?: string;
   care?: string;
   shipping?: string;
-  lifestyle?: string;         // closing paragraph (Official Hoodie)
+  lifestyle?: string;
   sizes?: string[];
-  colors?: { name: string; hex: string }[];
+  colors?: { name: string; hex: string; image?: string }[];
   reviews?: { count: number; avg: number };
   stock?: number;
   comparePrice?: number;
@@ -32,6 +33,13 @@ const PRODUCT_SPECS: Record<string, {
       'Kangaroo pocket',
       'Relaxed streetwear fit',
       'Reinforced ribbed cuffs and hem',
+    ],
+    highlights: [
+      { icon: '🧵', label: '380gsm Terry' },
+      { icon: '👕', label: 'Relaxed Fit' },
+      { icon: '✦', label: '80% Cotton' },
+      { icon: '📦', label: 'Free Returns' },
+      { icon: '🖨', label: 'Screen Print' },
     ],
     shipping: 'Free shipping on all orders. 30-day hassle-free returns.',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
@@ -61,6 +69,13 @@ const PRODUCT_SPECS: Record<string, {
       'Kangaroo pocket',
       'Available in sizes S–XL',
     ],
+    highlights: [
+      { icon: '🧵', label: '380gsm Terry' },
+      { icon: '👕', label: 'Relaxed Fit' },
+      { icon: '✦', label: '100% Cotton' },
+      { icon: '🪡', label: 'Embroidered' },
+      { icon: '📦', label: 'Free Returns' },
+    ],
     lifestyle: "Part of the DreamPlay lifestyle. Whether you're practicing, performing, or just repping the brand you love — this hoodie belongs in your rotation.",
     shipping: 'Free shipping on all orders. 30-day hassle-free returns.',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
@@ -76,6 +91,14 @@ const PRODUCT_SPECS: Record<string, {
   'ds-6-0-pro-keyboard': {
     headline: 'Ships August 2026. Shipping details finalized before delivery.',
     features: ['88 fully-weighted hammer-action keys', 'Studio-grade 192kHz/24-bit sound engine', 'Bluetooth MIDI + USB Type-C', 'Built-in speakers + headphone out', '500+ instrument voices', 'DreamPlay app compatible'],
+    highlights: [
+      { icon: '🎹', label: '88 Keys' },
+      { icon: '⚖️', label: 'Fully Weighted' },
+      { icon: '📡', label: 'Bluetooth MIDI' },
+      { icon: '🔊', label: 'Built-in Speakers' },
+      { icon: '🎙', label: '192kHz / 24-bit' },
+      { icon: '🛡', label: '2-Year Warranty' },
+    ],
     shipping: 'Free shipping. Ships August 2026. Shipping details finalized before delivery.',
     material: 'Aircraft-grade aluminum chassis · German-action keybed',
     reviews: { count: 12, avg: 5.0 },
@@ -85,6 +108,13 @@ const PRODUCT_SPECS: Record<string, {
   'ds-6-0-white': {
     headline: 'Ships August 2026. Shipping details finalized before delivery.',
     features: ['88 fully-weighted keys', 'Ivory finish — special edition colorway', 'All DreamPlay One Pro features included', 'DreamPlay app compatible'],
+    highlights: [
+      { icon: '🎹', label: '88 Keys' },
+      { icon: '⚖️', label: 'Fully Weighted' },
+      { icon: '🤍', label: 'Ivory Edition' },
+      { icon: '📡', label: 'Bluetooth MIDI' },
+      { icon: '🛡', label: '2-Year Warranty' },
+    ],
     shipping: 'Free shipping. Ships August 2026.',
     reviews: { count: 8, avg: 4.8 },
     stock: 30,
@@ -93,6 +123,13 @@ const PRODUCT_SPECS: Record<string, {
   'ds-6-0-gold': {
     headline: 'Limited to 50 units worldwide.',
     features: ['Hand-polished champagne gold finish', '88 fully-weighted hammer-action keys', 'Limited to 50 units worldwide', 'Certificate of authenticity included', 'All DreamPlay One Pro features'],
+    highlights: [
+      { icon: '🏆', label: 'Ltd. 50 Units' },
+      { icon: '🎹', label: '88 Keys' },
+      { icon: '⚖️', label: 'Fully Weighted' },
+      { icon: '📜', label: 'Certificate' },
+      { icon: '✨', label: 'Gold Finish' },
+    ],
     shipping: 'Free shipping. Made to order — 12-week lead time. Ships August 2026.',
     reviews: { count: 4, avg: 5.0 },
     stock: 12,
@@ -101,6 +138,13 @@ const PRODUCT_SPECS: Record<string, {
   'ds-6-0-nightmare-black': {
     headline: 'Ships August 2026. Shipping details finalized before delivery.',
     features: ['88 fully-weighted keys', 'Matte Nightmare Black finish — premium blacked-out key housing', 'All DreamPlay One Pro features included', 'DreamPlay app compatible'],
+    highlights: [
+      { icon: '🎹', label: '88 Keys' },
+      { icon: '⚖️', label: 'Fully Weighted' },
+      { icon: '🖤', label: 'Matte Black' },
+      { icon: '📡', label: 'Bluetooth MIDI' },
+      { icon: '🛡', label: '2-Year Warranty' },
+    ],
     shipping: 'Free shipping. Ships August 2026.',
     reviews: { count: 9, avg: 4.9 },
     stock: 45,
@@ -109,6 +153,12 @@ const PRODUCT_SPECS: Record<string, {
   'ds-5-5-keyboard': {
     headline: 'Ships August 2026. Shipping details finalized before delivery.',
     features: ['61 semi-weighted keys', 'Portable compact design', '300+ instrument voices', 'USB MIDI + 1/4" output'],
+    highlights: [
+      { icon: '🎹', label: '61 Keys' },
+      { icon: '🏃', label: 'Portable' },
+      { icon: '🎵', label: '300+ Voices' },
+      { icon: '🔌', label: 'USB MIDI' },
+    ],
     shipping: 'Free shipping on all orders.',
     reviews: { count: 31, avg: 4.7 },
     stock: 100,
@@ -116,11 +166,31 @@ const PRODUCT_SPECS: Record<string, {
   'dreamplay-go': {
     headline: 'Ships August 2026. Shipping details finalized before delivery.',
     features: ['61 keys — ultra-portable at 2.3 lbs', 'Built-in speaker', 'USB-C powered — no battery needed', 'DreamPlay app compatible (iOS & Android)'],
+    highlights: [
+      { icon: '🏃', label: '2.3 lbs' },
+      { icon: '🎹', label: '61 Keys' },
+      { icon: '🔋', label: 'USB-C Power' },
+      { icon: '📱', label: 'App Compatible' },
+    ],
     shipping: 'Free shipping on all orders.',
     reviews: { count: 18, avg: 4.6 },
     stock: 200,
   },
 };
+
+// ── Product Highlights ───────────────────────────────────────────────────────
+function ProductHighlights({ items }: { items: { icon: string; label: string }[] }) {
+  return (
+    <div className="pdp-highlights">
+      {items.map(({ icon, label }) => (
+        <div key={label} className="pdp-highlight-chip">
+          <span className="pdp-highlight-icon">{icon}</span>
+          <span className="pdp-highlight-label">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 // ── Stars ────────────────────────────────────────────────────────────────────
 function Stars({ avg }: { avg: number }) {
@@ -350,6 +420,9 @@ export default function ProductPage() {
             )}
           </div>
 
+          {/* ── Product highlights spec row ── */}
+          {specs.highlights && <ProductHighlights items={specs.highlights} />}
+
           {/* ── Product description — word-for-word from Shopify ── */}
           <ProductDescription slug={slug} specs={specs} />
 
@@ -383,13 +456,25 @@ export default function ProductPage() {
             </div>
           )}
 
-          {/* Color swatches */}
+          {/* Color swatches — image chips matching Concept theme */}
           {specs.colors && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
               <span style={{ fontSize: 13, fontWeight: 600 }}>Color</span>
-              {specs.colors.map(c => (
-                <button key={c.name} title={c.name} style={{ width: 22, height: 22, borderRadius: '50%', background: c.hex, border: '2px solid #111', cursor: 'pointer', boxShadow: 'inset 0 0 0 2px rgba(255,255,255,0.3)' }} aria-label={c.name} />
-              ))}
+              {specs.colors.map((c, i) => {
+                const chipImg = c.image ?? imgs[i]?.url ?? imgs[0]?.url;
+                return chipImg ? (
+                  <button
+                    key={c.name}
+                    title={c.name}
+                    style={{ width: 44, height: 44, borderRadius: 6, border: '2px solid #111', cursor: 'pointer', padding: 0, overflow: 'hidden', background: '#f0f0f0' }}
+                    aria-label={c.name}
+                  >
+                    <img src={chipImg} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </button>
+                ) : (
+                  <button key={c.name} title={c.name} style={{ width: 28, height: 28, borderRadius: '50%', background: c.hex, border: '2px solid #111', cursor: 'pointer' }} aria-label={c.name} />
+                );
+              })}
             </div>
           )}
 
