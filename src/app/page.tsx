@@ -168,6 +168,107 @@ function KeyboardComparison() {
   );
 }
 
+// ── Handspan Comparison (photo section) ────────────────────────────────────────
+function HandspanComparison() {
+  const rows = [
+    {
+      tag: 'DS 5.5',
+      tagColor: '#4fd1c5',
+      zone: 'Zone A',
+      span: '5.0–6.0" span needed',
+      note: "DreamPlay's most compact 44mm keys — designed for smaller hands and youth players.",
+      top: '0%',
+      height: '33.33%',
+    },
+    {
+      tag: 'DS 6.0',
+      tagColor: '#9a67f8',
+      zone: 'Zone B',
+      span: '6.0–7.0" span needed',
+      note: 'DreamPlay 48mm keys — same hand reaches a full octave with 0.5" to spare.',
+      top: '33.33%',
+      height: '33.33%',
+    },
+    {
+      tag: 'Standard',
+      tagColor: '#e53e3e',
+      zone: 'Zone C',
+      span: '6.5–7.5"+ span needed',
+      note: "Traditional 52.5mm Yamaha standard spacing — requires the widest reach for the same musical interval.",
+      top: '66.66%',
+      height: '33.34%',
+    },
+  ];
+
+  return (
+    <section className="handspan-section">
+      <div className="handspan-inner">
+        {/* Left: image composite */}
+        <div className="handspan-img-col">
+          <div className="handspan-img-wrap">
+            <img
+              src="/assets/comparison/hands-reach.png"
+              alt="Same hand reaching across DS 5.5, DS 6.0, and standard Yamaha keyboard"
+            />
+            {/* floating row badges */}
+            {rows.map((r, i) => (
+              <div
+                key={i}
+                className="handspan-row-badge"
+                style={{ top: `calc(${r.top} + 6%)`, borderColor: r.tagColor }}
+              >
+                <span className="handspan-badge-tag" style={{ background: r.tagColor }}>{r.tag}</span>
+                <span className="handspan-badge-zone">{r.zone}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: text breakdown */}
+        <div className="handspan-info-col">
+          <div className="handspan-eyebrow">Handspan Reference</div>
+          <h2 className="handspan-title">Same hand.<br /><em>Different reach.</em></h2>
+          <p className="handspan-intro">
+            The same average hand (6.2") is placed on all three keyboards below. The highlighted keys
+            show how DreamPlay's narrower key spacing extends your effective reach without changing your hand.
+          </p>
+
+          <div className="handspan-rows">
+            {rows.map((r, i) => (
+              <div key={i} className="handspan-row-item">
+                <div className="handspan-row-dot" style={{ background: r.tagColor }} />
+                <div>
+                  <div className="handspan-row-head">
+                    <strong>{r.tag}</strong>
+                    <span className="handspan-row-zone" style={{ background: r.tagColor + '22', color: r.tagColor }}>{r.zone}</span>
+                    <span className="handspan-row-span">{r.span}</span>
+                  </div>
+                  <p className="handspan-row-note">{r.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="handspan-stat-row">
+            <div className="handspan-stat">
+              <span className="handspan-stat-num">–8%</span>
+              <span className="handspan-stat-label">Key width vs standard</span>
+            </div>
+            <div className="handspan-stat">
+              <span className="handspan-stat-num">+0.5"</span>
+              <span className="handspan-stat-label">Extra octave reach</span>
+            </div>
+            <div className="handspan-stat">
+              <span className="handspan-stat-num">3</span>
+              <span className="handspan-stat-label">Zones for every hand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Countdown ─────────────────────────────────────────────────────────────────
 function useCountdown(hours = 72) {
   const [t, setT] = useState({ h: hours, m: 0, s: 0 });
@@ -460,6 +561,7 @@ export default function HomePage() {
           SECTION 5: Keyboard size comparison drag slider
           ══════════════════════════════════════════════════════════════ */}
       <KeyboardComparison />
+      <HandspanComparison />
 
       {/* Scrolling text marquee */}
       <div className="text-marquee" aria-hidden="true">
