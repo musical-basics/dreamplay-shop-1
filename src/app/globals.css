@@ -239,51 +239,71 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .brand-social a:hover { color: var(--text); border-color: var(--text); }
 
 /* ── Category Tile Row ───────────────────────────────── */
-/* Matches screenshot: horizontal scroll of square image tiles with label + count + arrow */
-.category-row { padding: 36px 0 0; border-bottom: 1px solid var(--border); }
+/* Matches reference: compact narrow horizontal tiles, small editorial image + label + count + arrow */
+.category-row { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .category-row-inner {
-  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
 .category-row-inner::-webkit-scrollbar { display: none; }
+
 .category-tile {
   flex: 0 0 auto;
-  min-width: 200px;
-  padding: 16px 20px 20px;
+  width: 168px;                        /* compact — matches reference */
+  padding: 0;
   border-right: 1px solid var(--border);
   display: flex; flex-direction: column;
   cursor: pointer;
   transition: background 0.15s;
+  text-decoration: none; color: inherit;
   position: relative;
+  overflow: hidden;
 }
 .category-tile:hover { background: var(--bg-2); }
-.category-tile:first-child { min-width: 240px; }
-.category-tile-img {
-  width: 100%; aspect-ratio: 1; border-radius: var(--radius);
-  overflow: hidden; background: var(--bg-2); margin-bottom: 14px;
-  transition: transform 0.3s var(--ease);
-}
-.category-tile:hover .category-tile-img { transform: scale(1.02); }
-.category-tile-img img { width: 100%; height: 100%; object-fit: cover; }
-.category-tile-name {
-  font-size: 14px; font-weight: 700; margin-bottom: 2px;
-}
-.category-tile-count {
-  font-size: 12px; color: var(--text-muted);
-}
-.category-tile-arrow {
-  position: absolute; top: 16px; right: 16px;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--bg-3); display: flex; align-items: center;
-  justify-content: center; color: var(--text-muted);
-  font-size: 14px; transition: background 0.15s, color 0.15s;
-}
-.category-tile:hover .category-tile-arrow { background: var(--text); color: #fff; }
-/* Featured "All products" tile */
+
+/* First tile (All products) is slightly wider and highlighted */
 .category-tile.all-tile {
-  min-width: 240px;
+  width: 200px;
   background: var(--bg-2);
 }
-.category-tile.all-tile .category-tile-img { background: var(--bg-3); }
+
+/* Image area — editorial landscape crop, no aspect-ratio crop distortion */
+.category-tile-img {
+  width: 100%;
+  height: 150px;                       /* fixed compact height */
+  overflow: hidden;
+  background: var(--bg-2);
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+.category-tile:hover .category-tile-img { transform: scale(1.04); }
+.category-tile-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+
+/* Text below image */
+.category-tile-name {
+  font-size: 13px; font-weight: 700;
+  padding: 10px 14px 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.category-tile-count {
+  font-size: 11px; color: var(--text-muted);
+  padding: 0 14px 12px;
+}
+
+/* Arrow circle — bottom right */
+.category-tile-arrow {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--bg-3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 11px;
+  transition: background 0.15s, color 0.15s;
+}
+.category-tile:hover .category-tile-arrow { background: var(--text); color: #fff; }
 
 /* ── Products Section ────────────────────────────────── */
 .products-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
@@ -657,8 +677,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   .cart-drawer { width: 100%; border-radius: var(--radius-lg) var(--radius-lg) 0 0; top: auto; height: 85vh; }
-  .category-tile { min-width: 160px; }
-  .category-tile:first-child { min-width: 180px; }
+  .category-tile { width: 140px; }
+  .category-tile.all-tile { width: 160px; }
+  .category-tile-img { height: 120px; }
 }
 
 /* ── Hero Product Carousel ───────────────────────────── */
